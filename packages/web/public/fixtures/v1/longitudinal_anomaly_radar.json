@@ -1,0 +1,76 @@
+{
+  "controlBufferDefinition": "10 km non-project matched Sundarbans tidal mangrove buffer",
+  "currentWindowEvaluation": {
+    "controlBufferMeanNdvi": 0.53,
+    "controlBufferStdNdvi": 0.06,
+    "decision": "FAIL",
+    "observedProjectNdvi": 0.28,
+    "opticalSarConsistencyStatus": "OPTICAL_SAR_DIVERGENCE",
+    "sarVhVvBackscatterDb": -11.4,
+    "summary": "Optical-SAR Divergence detected: Observed NDVI (0.28) deviates sharply from 10 km control buffer (Z = -4.17 < -3.5) while Sentinel-1 SAR backscatter remains intact (-11.4 dB), indicating cloud/shadow artifact.",
+    "year": 2023,
+    "zScoreGrowth": -4.17
+  },
+  "historicalTrajectory": [
+    {
+      "controlMeanNdvi": 0.51,
+      "controlStdNdvi": 0.05,
+      "projectMeanNdvi": 0.52,
+      "sarBackscatterDb": -11.8,
+      "year": 2015
+    },
+    {
+      "controlMeanNdvi": 0.52,
+      "controlStdNdvi": 0.05,
+      "projectMeanNdvi": 0.55,
+      "sarBackscatterDb": -11.7,
+      "year": 2016
+    },
+    {
+      "controlMeanNdvi": 0.53,
+      "controlStdNdvi": 0.06,
+      "projectMeanNdvi": 0.58,
+      "sarBackscatterDb": -11.6,
+      "year": 2017
+    },
+    {
+      "controlMeanNdvi": 0.53,
+      "controlStdNdvi": 0.05,
+      "projectMeanNdvi": 0.61,
+      "sarBackscatterDb": -11.4,
+      "year": 2018
+    },
+    {
+      "controlMeanNdvi": 0.54,
+      "controlStdNdvi": 0.05,
+      "projectMeanNdvi": 0.64,
+      "sarBackscatterDb": -11.3,
+      "year": 2019
+    },
+    {
+      "controlMeanNdvi": 0.41,
+      "controlStdNdvi": 0.08,
+      "disturbanceEvent": "Super Cyclone Amphan (May 2020) canopy stripping",
+      "projectMeanNdvi": 0.44,
+      "sarBackscatterDb": -13.2,
+      "year": 2020
+    },
+    {
+      "controlMeanNdvi": 0.48,
+      "controlStdNdvi": 0.06,
+      "projectMeanNdvi": 0.56,
+      "sarBackscatterDb": -12.1,
+      "year": 2021
+    },
+    {
+      "controlMeanNdvi": 0.52,
+      "controlStdNdvi": 0.05,
+      "projectMeanNdvi": 0.65,
+      "sarBackscatterDb": -11.5,
+      "year": 2022
+    }
+  ],
+  "projectId": "VCS-1463",
+  "radarModule": "Longitudinal-Control-Buffer-Z-Score-Radar",
+  "version": "1.0.0"
+}

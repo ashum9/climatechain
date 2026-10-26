@@ -1,0 +1,223 @@
+{
+  "commitment": {
+    "checks": [
+      {
+        "checkId": "SOURCE_INTEGRITY",
+        "details": {
+          "artifacts": [
+            {
+              "artifactId": "boundary-kml",
+              "note": "Non-redistributed third-party artifact pinned by cryptographic commitment",
+              "sha256": "6c23a771351e6c3f04473a1af3d6d691819d07d0408ffd159808aacbffcba214",
+              "status": "PASS_EXTERNAL_PINNED"
+            },
+            {
+              "artifactId": "boundary_summary.json",
+              "sha256": "a250c8999f2ac906b406da8a2ecee72a0c968723c98285d122045e67b8f1a5e7",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "stac_completeness_index.json",
+              "sha256": "a1467a39dbd34f83594baa12051499741f7139f7ed27038f2fbd169b045708c7",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "hansen_stats.json",
+              "sha256": "506f2c43956618edd764ed4e16cd72b401590a0f9539be1a6dc8830870ac23c8",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "scene_metrics.json",
+              "sha256": "8612725e32721f4213032a9584236cb40ae60a31fdca17fd51a1772513fe5abb",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "sentinel2_quicklook.png",
+              "sha256": "887f33b59de6f5346cd28c036cd5132f20dfc405304af32eaf2861ad28632f91",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "vrod_retirement_audit.json",
+              "sha256": "9cee3340f6e37c45bbe9ca4f5725a6ac8c1840f7f74611bdcb6b85bee47ea637",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "longitudinal_anomaly_radar.json",
+              "sha256": "40354f07cdd396ee8455ebf3323bed5c0cf88492cd9b6d909e32df8b481af763",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "field_photos_manifest.json",
+              "sha256": "34c3d1dfb7414a55c7cd5b4b27e311023bcd6be486f01a16437ad5fe7d98969e",
+              "status": "PASS"
+            }
+          ]
+        },
+        "name": "Cryptographic Source & Merkle Integrity",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "All distributed artifact SHA-256 hashes match commitments exactly"
+      },
+      {
+        "checkId": "SPATIAL_BOUNDARY",
+        "details": {
+          "intersectionCoveragePct": 100.0,
+          "placemarkCount": 478,
+          "polygonCount": 506,
+          "statedAreaHa": 4675.0
+        },
+        "name": "Spatial Boundary Intersection & Topology",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "Verified 506 restoration polygons across 478 placemarks within Sundarbans AoI; 100% spatial intersection with Sentinel-2 footprint"
+      },
+      {
+        "checkId": "TEMPORAL_COVERAGE",
+        "details": {
+          "disclosureNote": "Monitoring period dates are a transparent test fixture; official VCS 1463 monitoring report PDF dates are unread/unverified.",
+          "status": "UNVERIFIED_FIXTURE",
+          "window": {
+            "disclosureNote": "Monitoring period dates are a transparent test fixture; official VCS 1463 monitoring report PDF dates are unread/unverified.",
+            "endDate": "2023-12-31",
+            "startDate": "2023-01-01",
+            "verificationStatus": "UNVERIFIED_FIXTURE"
+          }
+        },
+        "name": "Temporal Monitoring Window & Crediting Period",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "All scene timestamps fall within declared monitoring window [2023-01-01, 2023-12-31] (UNVERIFIED_FIXTURE)"
+      },
+      {
+        "checkId": "CLOUD_AND_TIDAL_GAP",
+        "details": {
+          "scenes": [
+            {
+              "aoiCloudCoverPct": 0.0,
+              "aoiUsablePct": 100.0,
+              "datetimeUtc": "2023-12-30T04:52:22.954000Z",
+              "meanNdvi": 0.71,
+              "ndwiTidalInundationPct": 21.4,
+              "sceneId": "S2A_45QYE_20231230_0_L2A",
+              "sclCloudGapPct": 0.0,
+              "tileCloudCoverPct": 0.01
+            }
+          ],
+          "thresholds": {
+            "maxCloud": 20.0,
+            "maxTide": 35.0
+          }
+        },
+        "name": "Cloud Cover & Tidal Inundation Gap Gate",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "All scenes satisfy cloud gap (<=20.0%) and tidal inundation (<=35.0%) thresholds"
+      },
+      {
+        "checkId": "STAC_COMPLETENESS",
+        "details": {
+          "candidateScenesInWindow": 284,
+          "minCandidateCloudPct": 0.0,
+          "outcome": "CONSISTENT_WITH_RULE",
+          "submittedCloudPct": 0.0,
+          "totalCandidateScenes": 284
+        },
+        "name": "STAC Scene Selection Completeness (Anti-Cherry-Picking)",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "Validated against full multi-catalog census of 284 candidate scenes in monitoring window; selected scene is consistent with declared selection criteria (cloud gap 0.0% vs minimum available 0.0%)"
+      },
+      {
+        "checkId": "SERIAL_INTEGRITY_ADVISORY",
+        "details": {
+          "totalBatches": 3,
+          "totalUnits": 125000
+        },
+        "name": "Berkeley VROD Retirement Serial & Cross-Registry Audit",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "Verified 3 retirement batches (125000 VCUs); 0 serial block overlaps detected"
+      },
+      {
+        "checkId": "LONGITUDINAL_ANOMALY_RADAR",
+        "details": {
+          "controlBufferMeanNdvi": 0.54,
+          "controlBufferStdNdvi": 0.05,
+          "decision": "PASS",
+          "observedProjectNdvi": 0.71,
+          "opticalSarConsistencyStatus": "CONSISTENT_ADDITIVE_RECOVERY",
+          "sarVhVvBackscatterDb": -11.2,
+          "summary": "Canopy recovery verified: Project parcel NDVI (0.71) demonstrates positive additionality relative to 10 km control buffer (Z = +3.4), corroborated by Sentinel-1 structural SAR backscatter (-11.2 dB).",
+          "year": 2023,
+          "zScoreGrowth": 3.4
+        },
+        "name": "Longitudinal Control-Buffer Z-Score Anomaly Radar",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "Canopy recovery verified: Project parcel NDVI (0.71) demonstrates positive additionality relative to 10 km control buffer (Z = +3.4), corroborated by Sentinel-1 structural SAR backscatter (-11.2 dB)."
+      },
+      {
+        "checkId": "FIELD_PHOTO_GEOFENCE_PROVENANCE",
+        "details": {
+          "photos": [
+            {
+              "capturedAtUtc": "2023-03-12T09:30:00Z",
+              "coordinates": [
+                88.805123,
+                22.16421
+              ],
+              "leafSha256": "4a7b9c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b",
+              "matchedPolygonId": "POLYGON_42",
+              "photoId": "FIELD-PHOTO-2023-01",
+              "reasonCode": "ALL_CHECKS_PASSED",
+              "speciesObserved": "Rhizophora mucronata (Mangrove sapling)",
+              "status": "PASS"
+            },
+            {
+              "capturedAtUtc": "2023-04-18T11:15:00Z",
+              "coordinates": [
+                88.71234,
+                21.984512
+              ],
+              "leafSha256": "5b8c0d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c",
+              "matchedPolygonId": "POLYGON_187",
+              "photoId": "FIELD-PHOTO-2023-02",
+              "reasonCode": "ALL_CHECKS_PASSED",
+              "speciesObserved": "Avicennia marina (Pneumatophore root development)",
+              "status": "PASS"
+            },
+            {
+              "capturedAtUtc": "2023-05-02T14:20:00Z",
+              "coordinates": [
+                88.94125,
+                22.02341
+              ],
+              "leafSha256": "7d0e2f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e",
+              "matchedPolygonId": "POLYGON_419",
+              "photoId": "FIELD-PHOTO-2023-03-CORR",
+              "reasonCode": "ALL_CHECKS_PASSED",
+              "speciesObserved": "Ceriops decandra (Restored canopy parcel)",
+              "status": "PASS"
+            }
+          ],
+          "totalPhotos": 3
+        },
+        "name": "Geo-Pinned Field Photo Geofence Provenance",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "All 3 geotagged field photos verified inside VCS 1463 restoration polygons with valid acquisition timestamps"
+      }
+    ],
+    "merkleRoot": "0xd7c05e6e8c8414e43d8878dd23784740b7bd652b0a03470d5b2f237a09d65f92",
+    "overallRecommendedDecision": "APPROVED",
+    "packageHash": "0xc19fd3bb3010a458dc709fc9b555d1ea23010dfa39162c7346d3e76619fe0b4f",
+    "projectId": "VCS-1463",
+    "recommendedReasonCode": "ALL_CHECKS_PASSED",
+    "schemaVersion": "1.0.0"
+  },
+  "provenance": {
+    "environment": "CCEL-Deterministic-Verification-Engine",
+    "evaluatedAtUtc": "2026-10-25T12:00:00Z",
+    "evaluatorEngineVersion": "0.2.0"
+  }
+}

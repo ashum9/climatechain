@@ -1,0 +1,487 @@
+{
+  "schemaVersion": "ccel-wildfire-dnbr/1.0",
+  "caseId": "TURKIYE-IZMIR-ORHANLI-2025",
+  "title": "June 2025 \u0130zmir / Orhanl\u0131 Wildfires \u2014 Reproducible dNBR Burn-Area & Sensitivity Audit",
+  "productQuestion": "How much land appears burned, how sensitive is that estimate to the imagery and method, and can another reviewer reproduce it?",
+  "studyArea": {
+    "bboxWgs84": [
+      26.78,
+      38.03,
+      27.08,
+      38.23
+    ],
+    "ignitionReferenceWgs84": [
+      26.990643,
+      38.191543
+    ],
+    "mgrsTile": "35SMC",
+    "utmEpsg": "EPSG:32635",
+    "pixelResolutionMeters": 20.0,
+    "windowRows": [
+      3434,
+      4542
+    ],
+    "windowCols": [
+      4036,
+      5352
+    ],
+    "totalWindowAreaHa": 58325.1,
+    "sectorSplit": {
+      "fireBWestCols": [
+        4036,
+        4636
+      ],
+      "fireBWestDescription": "Seferihisar / Do\u011fanbey sector (26.78\u00b0E to 26.917\u00b0E)",
+      "fireAEastCols": [
+        4636,
+        5352
+      ],
+      "fireAEastDescription": "Orhanl\u0131 / Menderes sector (26.917\u00b0E to 27.08\u00b0E)"
+    }
+  },
+  "neroReference": {
+    "sourceDocument": "NERO Fire Brief: \u0130zmir, Orhanl\u0131 Wildfires \u2013 T\u00fcrkiye, June 2025 (01.07.2025)",
+    "authors": [
+      "Assoc. Prof. Dr. Kadir Alperen Coskuner",
+      "Dr. Georgios Papavasileiou"
+    ],
+    "observationDate": "2025-06-30T08:56:00Z",
+    "fireA_ha": 4277.7,
+    "fireB_ha": 3541.9,
+    "combined_ha": 7819.6,
+    "note": "Published while fires were actively spreading on 30 June 2025. Exact dNBR threshold, band pair (B08 vs B8A), and smoke/shadow masking rules are not specified in the brief."
+  },
+  "scenesEvaluated": {
+    "2025-06-25": {
+      "itemId": "S2B_35SMC_20250625_1_L2A",
+      "role": "PRE_FIRE_BASELINE",
+      "baseUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2B_35SMC_20250625_1_L2A",
+      "rationale": "Last cloud-free observation (0.02% tile cloud) prior to the 29 June 2025 09:57 UTC ignition."
+    },
+    "2025-06-30": {
+      "itemId": "S2C_35SMC_20250630_0_L2A",
+      "role": "PROVISIONAL_ACTIVE_FIRE",
+      "baseUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2C_35SMC_20250630_0_L2A",
+      "rationale": "Same acquisition date (30 June 2025, 08:56 UTC) referenced in NERO brief; captures active fire and smoke plumes before final containment."
+    },
+    "2025-07-05": {
+      "itemId": "S2B_35SMC_20250705_0_L2A",
+      "role": "POST_FIRE_CONTAINED",
+      "baseUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/7/S2B_35SMC_20250705_0_L2A",
+      "rationale": "First smoke-free post-containment observation (0.02% tile cloud), showing additional southwest perimeter expansion after 30 June."
+    },
+    "2026-06-25": {
+      "itemId": "S2C_35SMC_20260625_0_L2A",
+      "role": "ONE_YEAR_ANNIVERSARY_FOLLOWUP",
+      "baseUrl": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2026/6/S2C_35SMC_20260625_0_L2A",
+      "rationale": "Exact 1-year anniversary cloud-free observation (0.015% tile cloud) matched by calendar day to minimize phenological and solar-zenith bias."
+    }
+  },
+  "comparisons": {
+    "2025-06-30": {
+      "preSceneId": "S2B_35SMC_20250625_1_L2A",
+      "postSceneId": "S2C_35SMC_20250630_0_L2A",
+      "postRole": "PROVISIONAL_ACTIVE_FIRE",
+      "postSclHistogramPixels": {
+        "2": 38398,
+        "3": 1,
+        "4": 483746,
+        "5": 555974,
+        "6": 369046,
+        "7": 10540,
+        "8": 142,
+        "9": 32,
+        "10": 249
+      },
+      "darkAndUnclassifiedAreaHa": 1957.5,
+      "cloudAndShadowAreaHa": 17.0,
+      "thresholdSensitivity": [
+        {
+          "threshold": 0.1,
+          "label": "USGS Unburned / Low Boundary (>= 0.10)",
+          "calibratedTotalHa": 8201.3,
+          "fireAEastHa": 4352.2,
+          "fireBWestHa": 3849.0,
+          "uncalibratedDnTotalHa": 8108.4,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 6409.6
+        },
+        {
+          "threshold": 0.15,
+          "label": "Low Severity Lower Bound (>= 0.15)",
+          "calibratedTotalHa": 7963.1,
+          "fireAEastHa": 4220.9,
+          "fireBWestHa": 3742.2,
+          "uncalibratedDnTotalHa": 7841.1,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 6183.6
+        },
+        {
+          "threshold": 0.2,
+          "label": "Low-to-Moderate Transition (>= 0.20)",
+          "calibratedTotalHa": 7808.6,
+          "fireAEastHa": 4144.0,
+          "fireBWestHa": 3664.6,
+          "uncalibratedDnTotalHa": 7574.7,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 6040.5
+        },
+        {
+          "threshold": 0.27,
+          "label": "USGS Moderate-Low Severity (>= 0.27)",
+          "calibratedTotalHa": 7630.4,
+          "fireAEastHa": 4062.1,
+          "fireBWestHa": 3568.3,
+          "uncalibratedDnTotalHa": 7135.4,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 5883.4
+        },
+        {
+          "threshold": 0.44,
+          "label": "USGS Moderate-High Severity (>= 0.44)",
+          "calibratedTotalHa": 7227.7,
+          "fireAEastHa": 3873.7,
+          "fireBWestHa": 3354.0,
+          "uncalibratedDnTotalHa": 5524.1,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 5532.2
+        },
+        {
+          "threshold": 0.66,
+          "label": "USGS High Severity (>= 0.66)",
+          "calibratedTotalHa": 6637.8,
+          "fireAEastHa": 3618.8,
+          "fireBWestHa": 3019.0,
+          "uncalibratedDnTotalHa": 3043.4,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 5018.6
+        }
+      ]
+    },
+    "2025-07-05": {
+      "preSceneId": "S2B_35SMC_20250625_1_L2A",
+      "postSceneId": "S2B_35SMC_20250705_0_L2A",
+      "postRole": "POST_FIRE_CONTAINED",
+      "postSclHistogramPixels": {
+        "2": 24286,
+        "4": 450612,
+        "5": 608844,
+        "6": 369273,
+        "7": 5109,
+        "8": 4
+      },
+      "darkAndUnclassifiedAreaHa": 1175.8,
+      "cloudAndShadowAreaHa": 0.2,
+      "thresholdSensitivity": [
+        {
+          "threshold": 0.1,
+          "label": "USGS Unburned / Low Boundary (>= 0.10)",
+          "calibratedTotalHa": 10572.7,
+          "fireAEastHa": 5085.2,
+          "fireBWestHa": 5487.5,
+          "uncalibratedDnTotalHa": 10048.9,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 9528.6
+        },
+        {
+          "threshold": 0.15,
+          "label": "Low Severity Lower Bound (>= 0.15)",
+          "calibratedTotalHa": 9972.6,
+          "fireAEastHa": 4742.4,
+          "fireBWestHa": 5230.2,
+          "uncalibratedDnTotalHa": 9712.5,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 8940.4
+        },
+        {
+          "threshold": 0.2,
+          "label": "Low-to-Moderate Transition (>= 0.20)",
+          "calibratedTotalHa": 9726.2,
+          "fireAEastHa": 4620.6,
+          "fireBWestHa": 5105.6,
+          "uncalibratedDnTotalHa": 9381.0,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 8707.5
+        },
+        {
+          "threshold": 0.27,
+          "label": "USGS Moderate-Low Severity (>= 0.27)",
+          "calibratedTotalHa": 9481.9,
+          "fireAEastHa": 4513.2,
+          "fireBWestHa": 4968.6,
+          "uncalibratedDnTotalHa": 8827.8,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 8481.9
+        },
+        {
+          "threshold": 0.44,
+          "label": "USGS Moderate-High Severity (>= 0.44)",
+          "calibratedTotalHa": 8925.6,
+          "fireAEastHa": 4280.7,
+          "fireBWestHa": 4644.9,
+          "uncalibratedDnTotalHa": 6914.2,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 7969.8
+        },
+        {
+          "threshold": 0.66,
+          "label": "USGS High Severity (>= 0.66)",
+          "calibratedTotalHa": 8077.1,
+          "fireAEastHa": 3958.6,
+          "fireBWestHa": 4118.5,
+          "uncalibratedDnTotalHa": 3983.5,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 7179.4
+        }
+      ]
+    },
+    "2026-06-25": {
+      "preSceneId": "S2B_35SMC_20250625_1_L2A",
+      "postSceneId": "S2C_35SMC_20260625_0_L2A",
+      "postRole": "ONE_YEAR_ANNIVERSARY_FOLLOWUP",
+      "postSclHistogramPixels": {
+        "2": 2829,
+        "4": 506842,
+        "5": 576963,
+        "6": 370115,
+        "7": 1325,
+        "8": 21,
+        "9": 4,
+        "10": 29
+      },
+      "darkAndUnclassifiedAreaHa": 166.2,
+      "cloudAndShadowAreaHa": 2.2,
+      "thresholdSensitivity": [
+        {
+          "threshold": 0.1,
+          "label": "USGS Unburned / Low Boundary (>= 0.10)",
+          "calibratedTotalHa": 8848.8,
+          "fireAEastHa": 4890.0,
+          "fireBWestHa": 3958.8,
+          "uncalibratedDnTotalHa": 7574.7,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 8808.6
+        },
+        {
+          "threshold": 0.15,
+          "label": "Low Severity Lower Bound (>= 0.15)",
+          "calibratedTotalHa": 8000.5,
+          "fireAEastHa": 4591.0,
+          "fireBWestHa": 3409.5,
+          "uncalibratedDnTotalHa": 6545.7,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 7969.0
+        },
+        {
+          "threshold": 0.2,
+          "label": "Low-to-Moderate Transition (>= 0.20)",
+          "calibratedTotalHa": 7387.0,
+          "fireAEastHa": 4369.6,
+          "fireBWestHa": 3017.4,
+          "uncalibratedDnTotalHa": 5657.5,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 7365.0
+        },
+        {
+          "threshold": 0.27,
+          "label": "USGS Moderate-Low Severity (>= 0.27)",
+          "calibratedTotalHa": 6738.6,
+          "fireAEastHa": 4112.5,
+          "fireBWestHa": 2626.1,
+          "uncalibratedDnTotalHa": 4460.6,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 6723.8
+        },
+        {
+          "threshold": 0.44,
+          "label": "USGS Moderate-High Severity (>= 0.44)",
+          "calibratedTotalHa": 5480.2,
+          "fireAEastHa": 3517.7,
+          "fireBWestHa": 1962.5,
+          "uncalibratedDnTotalHa": 1783.0,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 5473.2
+        },
+        {
+          "threshold": 0.66,
+          "label": "USGS High Severity (>= 0.66)",
+          "calibratedTotalHa": 3859.7,
+          "fireAEastHa": 2626.8,
+          "fireBWestHa": 1233.0,
+          "uncalibratedDnTotalHa": 114.1,
+          "strictMaskExcludingDarkAndUnclassifiedHa": 3855.4
+        }
+      ]
+    }
+  },
+  "oneYearFollowup": {
+    "baselineDate": "2025-06-25",
+    "postFireContainedDate": "2025-07-05",
+    "oneYearAnniversaryDate": "2026-06-25",
+    "evaluatedFootprintDefinition": "Pixels inside 2025-07-05 dNBR >= 0.20 perimeter (9,726.2 ha)",
+    "meanNbrPreFire20250625": 0.6386,
+    "meanNbrPostFire20250705": -0.6205,
+    "meanNbrOneYear20260625": 0.1619,
+    "persistentBurnScarAt020Ha": 6842.4,
+    "spectralReboundBelow020Ha": 2883.8,
+    "interpretation": "One year after the fire (25 June 2026), mean NBR within the burned perimeter rebounded only partially from -0.6205 to 0.1619 (vs 0.6386 pre-fire). 6842.4 ha still exhibit dNBR >= 0.20 relative to pre-fire, while 2883.8 ha show spectral greening/rebound (dNBR < 0.20). Note: optical spectral rebound reflects herbaceous cover or maquis shrub resprouting and is NOT proof of successful tree replanting or recovered carbon stocks."
+  },
+  "keyFindings": {
+    "june30BracketRangeHa": [
+      7227.7,
+      7963.1
+    ],
+    "june30At020ThresholdHa": 7808.6,
+    "june30At027ThresholdHa": 7630.4,
+    "july05At020ThresholdHa": 9726.2,
+    "july05At027ThresholdHa": 9481.9,
+    "postJune30ExpansionAt020Ha": 1917.6,
+    "uncalibratedOffsetBiasAt044June30Ha": -1703.6,
+    "june30DarkAndSmokePixelsHa": 1957.5
+  },
+  "limitations": [
+    "dNBR measures shortwave/near-infrared spectral reflectance change, which correlates with canopy char and moisture loss but is not a direct measurement of soil carbon loss or tree mortality.",
+    "The 30 June 2025 acquisition (08:56 UTC) occurred while Fire B (Seferihisar) and parts of Fire A were still actively burning; 1,957.5 ha of the study box were classified as SCL dark area (class 2) or unclassified smoke/char (class 7).",
+    "Between 30 June and 5 July 2025, total burned area at dNBR >= 0.20 increased by +1,917.6 ha (+24.6%), primarily in the western Seferihisar sector (+1,441.0 ha).",
+    "Later vegetation greenness recovery (e.g., June 2026 NDVI/NBR) reflects understory/shrub regrowth as well as replanting and cannot by itself prove successful forest restoration or carbon sequestration."
+  ],
+  "imageArtifacts": {
+    "tci_2025-06-25": {
+      "file": "tci_20250625.png",
+      "sha256": "01d8cce03906f1293e936a9f680482f9c04ef9068ad42866b84477f0b00ed29d"
+    },
+    "tci_2025-06-30": {
+      "file": "tci_20250630.png",
+      "sha256": "1356f571488cbbeda59370d855b504a8a933f38cdaf2143907d47409da78b495"
+    },
+    "tci_2025-07-05": {
+      "file": "tci_20250705.png",
+      "sha256": "98bf76c5c2544395acc0b17ee4706e590ce86a19d44bba2726d4aec1df989f85"
+    },
+    "tci_2026-06-25": {
+      "file": "tci_20260625.png",
+      "sha256": "1286919762129096a4697a36c92de5ce603bd21f24d27d0561ac3edf3a2696c4"
+    },
+    "dnbr_2025-06-30": {
+      "file": "dnbr_20250630_overlay.png",
+      "sha256": "24e1a28d364a79427ef4c2829f9008cefa5103f5eeb86e465afc80345a3b2ee8"
+    },
+    "composite_2025-06-30": {
+      "file": "composite_20250630.png",
+      "sha256": "52edf777e94f21bf9648a8a4fe55eb78b75d93d0336220ea6ab8f02282e369cf"
+    },
+    "dnbr_2025-07-05": {
+      "file": "dnbr_20250705_overlay.png",
+      "sha256": "9e702e1355ad73a3458821f9ab455f0862993b42836d78bf16a1c0dd2ac2bd3d"
+    },
+    "composite_2025-07-05": {
+      "file": "composite_20250705.png",
+      "sha256": "8d0a92ef02af9776a37cae69be3831abd2da970412942cf12f76875fb4b92fc5"
+    },
+    "dnbr_2026-06-25": {
+      "file": "dnbr_20260625_overlay.png",
+      "sha256": "ef00f39404d33d01afad5d02ab0a15582fca1d25ddcdfca6534507aed498e716"
+    },
+    "composite_2026-06-25": {
+      "file": "composite_20260625.png",
+      "sha256": "8e1c0db18c1a6e8f4a519501980d1d29af5a204cc451c2461164ce98fec78cd9"
+    }
+  },
+  "cogRangeProvenance": [
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2B_35SMC_20250625_1_L2A/B8A.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4165827,
+      "rangePayloadSha256": "65e11400acb010812dff2bab75abcaa68960a11aa0581b9731f6569cd75bfc13"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2B_35SMC_20250625_1_L2A/B12.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4068016,
+      "rangePayloadSha256": "3a81ef2355efc2f1e7182e9dd8b9180eb9df4f81d497d2745d64113d838e5a62"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2B_35SMC_20250625_1_L2A/SCL.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 294997,
+      "rangePayloadSha256": "4a93d57c49e2c932fb45768b9c0641896f31cb52142a7b80cccd2e865b1abcc1"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2B_35SMC_20250625_1_L2A/TCI.tif",
+      "pageIndex": 1,
+      "tilesFetched": 12,
+      "bytesFetched": 6334777,
+      "rangePayloadSha256": "71f16010b88d5f8602e427aafc692380787e76049ea7619556de3863ce2d1e6f"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2C_35SMC_20250630_0_L2A/B8A.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4190303,
+      "rangePayloadSha256": "35433b0b0daaf900c59a544808a33b9a5e3bfadb2ee12dccd77b09b08048a62d"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2C_35SMC_20250630_0_L2A/B12.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4074992,
+      "rangePayloadSha256": "e753549fff253b56bb7f91691a3c19ecc632d583692f615d0b828deba8007187"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2C_35SMC_20250630_0_L2A/SCL.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 299612,
+      "rangePayloadSha256": "3ad533e070c566f86bc652d546ba87c81d46ced69ad8f9722bdec8251510bd17"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/6/S2C_35SMC_20250630_0_L2A/TCI.tif",
+      "pageIndex": 1,
+      "tilesFetched": 12,
+      "bytesFetched": 6375510,
+      "rangePayloadSha256": "82ac4512762197d36bc44debccc1b6d54e84cbc2d397d8f721a769ac41c30fd2"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/7/S2B_35SMC_20250705_0_L2A/B8A.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4162391,
+      "rangePayloadSha256": "e0a7ee463ffaf7a76b655504af2c51161d66af0dad2f0944320e774da6894ad0"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/7/S2B_35SMC_20250705_0_L2A/B12.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4083208,
+      "rangePayloadSha256": "cf7b3adba56f91da263201cfa537570938727b201be3960a4400472b0e03776b"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/7/S2B_35SMC_20250705_0_L2A/SCL.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 289571,
+      "rangePayloadSha256": "957ece386c6c435a3eafc1979d2073ac7621dac365a933d26817494bb2632059"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2025/7/S2B_35SMC_20250705_0_L2A/TCI.tif",
+      "pageIndex": 1,
+      "tilesFetched": 12,
+      "bytesFetched": 6432362,
+      "rangePayloadSha256": "b03150bc31e961d397273adeaa7e3ff57f1aa7261238a931610f83a16b4d91b2"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2026/6/S2C_35SMC_20260625_0_L2A/B8A.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4208845,
+      "rangePayloadSha256": "40872328789a04bb9906a62c1cd87a0a2cfdd2d35068a94f32bd160c28878a15"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2026/6/S2C_35SMC_20260625_0_L2A/B12.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4083232,
+      "rangePayloadSha256": "fbe130690507ce3767ea8296a6f981be1bafe201e14c54f844d9a3d52981a7d5"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2026/6/S2C_35SMC_20260625_0_L2A/SCL.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 282384,
+      "rangePayloadSha256": "b1fe2c37669b26c849f3fa54d542f30067866aa6ebb06145f1a7bc71762a3090"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/35/S/MC/2026/6/S2C_35SMC_20260625_0_L2A/TCI.tif",
+      "pageIndex": 1,
+      "tilesFetched": 12,
+      "bytesFetched": 6490992,
+      "rangePayloadSha256": "bb7f7c7e14ce5f03f74c6dc9c3f8e101477455edd2cb92bffe431a4634f44b41"
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="100%" height="100%" style="background:#0d1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <defs>
+    <linearGradient id="step-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1c2128"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="blue-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#388bfd"/>
+      <stop offset="100%" stop-color="#58a6ff"/>
+    </linearGradient>
+    <linearGradient id="amber-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d29922"/>
+      <stop offset="100%" stop-color="#e3b341"/>
+    </linearGradient>
+    <linearGradient id="teal-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f6feb"/>
+      <stop offset="100%" stop-color="#2ea043"/>
+    </linearGradient>
+    <linearGradient id="purple-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8957e5"/>
+      <stop offset="100%" stop-color="#a371f7"/>
+    </linearGradient>
+    <marker id="wf-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="480" fill="#0d1117"/>
+
+  <!-- Title -->
+  <g transform="translate(50, 35)">
+    <text x="0" y="20" fill="#ffffff" font-size="20" font-weight="700">The 4-Step Verification Workflow</text>
+    <text x="0" y="40" fill="#8b949e" font-size="13">Structured around the reviewer's job: from raw satellite evidence to on-chain permanent audit</text>
+  </g>
+
+  <!-- Step 1 Card -->
+  <g transform="translate(50, 95)">
+    <rect width="250" height="340" rx="8" fill="url(#step-grad)" stroke="#30363d" stroke-width="1.5"/>
+    <rect x="0" y="0" width="250" height="4" fill="url(#blue-bar)" rx="2"/>
+    <rect x="16" y="16" width="60" height="20" rx="4" fill="#388bfd" opacity="0.2"/>
+    <text x="24" y="30" fill="#58a6ff" font-size="11" font-weight="700">STEP 1</text>
+    <text x="16" y="60" fill="#e6edf3" font-size="16" font-weight="700">Claim Submission</text>
+    <text x="16" y="80" fill="#8b949e" font-size="12">Submitter commits package</text>
+
+    <g transform="translate(16, 100)">
+      <rect width="218" height="65" rx="5" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="20" fill="#c9d1d9" font-size="12" font-weight="600">GeoJSON &amp; Scenes</text>
+      <text x="10" y="38" fill="#8b949e" font-size="11">Spatial boundary coordinates,</text>
+      <text x="10" y="52" fill="#8b949e" font-size="11">MGRS tile &amp; Copernicus IDs</text>
+    </g>
+
+    <g transform="translate(16, 175)">
+      <rect width="218" height="65" rx="5" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="20" fill="#c9d1d9" font-size="12" font-weight="600">Deterministic Envelope</text>
+      <text x="10" y="38" fill="#8b949e" font-size="11">RFC 8785 Canonical JSON</text>
+      <text x="10" y="52" fill="#8b949e" font-size="11">RFC 6962 Binary Merkle Tree</text>
+    </g>
+
+    <g transform="translate(16, 250)">
+      <rect width="218" height="65" rx="5" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="20" fill="#c9d1d9" font-size="12" font-weight="600">Cryptographic Output</text>
+      <text x="10" y="38" fill="#58a6ff" font-size="10" font-family="monospace">packageHash (bytes32)</text>
+      <text x="10" y="52" fill="#58a6ff" font-size="10" font-family="monospace">merkleRoot (bytes32)</text>
+    </g>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 310 265 L 340 265" stroke="#58a6ff" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#wf-arrow)"/>
+
+  <!-- Step 2 Card -->
+  <g transform="translate(350, 95)">
+    <rect width="250" height="340" rx="8" fill="url(#step-grad)" stroke="#30363d" stroke-width="1.5"/>
+    <rect x="0" y="0" width="250" height="4" fill="url(#amber-bar)" rx="2"/>
+    <rect x="16" y="16" width="60" height="20" rx="4" fill="#d29922" opacity="0.2"/>
+    <text x="24" y="30" fill="#e3b341" font-size="11" font-weight="700">STEP 2</text>
+    <text x="16" y="60" fill="#e6edf3" font-size="16" font-weight="700">Quality Gates</text>
+    <text x="16" y="80" fill="#8b949e" font-size="12">Automated invariant checks</text>
+
+    <g transform="translate(16, 100)">
+      <rect width="218" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="18" fill="#3fb950" font-size="11" font-weight="600">✓ Check 1: Envelope</text>
+      <text x="10" y="32" fill="#8b949e" font-size="10">Merkle root &amp; schema validity</text>
+    </g>
+
+    <g transform="translate(16, 148)">
+      <rect width="218" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="18" fill="#3fb950" font-size="11" font-weight="600">✓ Check 2: Bounding</text>
+      <text x="10" y="32" fill="#8b949e" font-size="10">Single-tile containment (35SMC)</text>
+    </g>
+
+    <g transform="translate(16, 196)">
+      <rect width="218" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="18" fill="#e3b341" font-size="11" font-weight="600">! Check 3: Timing Gate</text>
+      <text x="10" y="32" fill="#8b949e" font-size="10">Post-containment &amp; smoke check</text>
+    </g>
+
+    <g transform="translate(16, 244)">
+      <rect width="218" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="18" fill="#f85149" font-size="11" font-weight="600">✗ Check 4: Sensitivity</text>
+      <text x="10" y="32" fill="#8b949e" font-size="10">PB 05.xx offset &amp; 6-tier curve</text>
+    </g>
+
+    <g transform="translate(16, 292)">
+      <rect width="218" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="18" fill="#3fb950" font-size="11" font-weight="600">✓ Check 5: Recovery</text>
+      <text x="10" y="32" fill="#8b949e" font-size="10">Narrow shrub regrowth scope</text>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 610 265 L 640 265" stroke="#58a6ff" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#wf-arrow)"/>
+
+  <!-- Step 3 Card -->
+  <g transform="translate(650, 95)">
+    <rect width="250" height="340" rx="8" fill="url(#step-grad)" stroke="#30363d" stroke-width="1.5"/>
+    <rect x="0" y="0" width="250" height="4" fill="url(#purple-bar)" rx="2"/>
+    <rect x="16" y="16" width="60" height="20" rx="4" fill="#8957e5" opacity="0.2"/>
+    <text x="24" y="30" fill="#a371f7" font-size="11" font-weight="700">STEP 3</text>
+    <text x="16" y="60" fill="#e6edf3" font-size="16" font-weight="700">Evidence Inspection</text>
+    <text x="16" y="80" fill="#8b949e" font-size="12">Interactive scientific review</text>
+
+    <g transform="translate(16, 100)">
+      <rect width="218" height="65" rx="5" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="20" fill="#c9d1d9" font-size="12" font-weight="600">Fig 1: Sensitivity Curve</text>
+      <text x="10" y="38" fill="#8b949e" font-size="11">Area vs threshold (0.10–0.66)</text>
+      <text x="10" y="52" fill="#e3b341" font-size="11">735.4 ha variation across tiers</text>
+    </g>
+
+    <g transform="translate(16, 175)">
+      <rect width="218" height="65" rx="5" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="20" fill="#c9d1d9" font-size="12" font-weight="600">Fig 2: 4-Date Progression</text>
+      <text x="10" y="38" fill="#8b949e" font-size="11">25 June, 30 June, 5 July 2025</text>
+      <text x="10" y="52" fill="#8b949e" font-size="11">&amp; 25 June 2026 anniversary</text>
+    </g>
+
+    <g transform="translate(16, 250)">
+      <rect width="218" height="65" rx="5" fill="#0d1117" stroke="#21262d"/>
+      <text x="10" y="20" fill="#c9d1d9" font-size="12" font-weight="600">Map &amp; Tamper Sim</text>
+      <text x="10" y="38" fill="#8b949e" font-size="11">Leaflet dNBR rasters</text>
+      <text x="10" y="52" fill="#58a6ff" font-size="11">1-byte local tamper testing</text>
+    </g>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 910 265 L 940 265" stroke="#58a6ff" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#wf-arrow)"/>
+
+  <!-- Step 4 Card -->
+  <g transform="translate(950, 95)">
+    <rect width="200" height="340" rx="8" fill="url(#step-grad)" stroke="#30363d" stroke-width="1.5"/>
+    <rect x="0" y="0" width="200" height="4" fill="url(#teal-bar)" rx="2"/>
+    <rect x="16" y="16" width="60" height="20" rx="4" fill="#238636" opacity="0.2"/>
+    <text x="24" y="30" fill="#3fb950" font-size="11" font-weight="700">STEP 4</text>
+    <text x="16" y="60" fill="#e6edf3" font-size="16" font-weight="700">On-Chain Ledger</text>
+    <text x="16" y="80" fill="#8b949e" font-size="12">Ethereum Sepolia DAG</text>
+
+    <g transform="translate(16, 100)">
+      <rect width="168" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="8" y="18" fill="#58a6ff" font-size="10" font-weight="600">Tx 0: Rule Pre-reg</text>
+      <text x="8" y="32" fill="#8b949e" font-size="9">TimingStatus tracking</text>
+    </g>
+
+    <g transform="translate(16, 148)">
+      <rect width="168" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="8" y="18" fill="#c9d1d9" font-size="10" font-weight="600">Tx 1: Submit v1</text>
+      <text x="8" y="32" fill="#8b949e" font-size="9">packageHash anchored</text>
+    </g>
+
+    <g transform="translate(16, 196)">
+      <rect width="168" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="8" y="18" fill="#f85149" font-size="10" font-weight="600">Tx 2-3: Dispute v1</text>
+      <text x="8" y="32" fill="#8b949e" font-size="9">Watchdog challenge upheld</text>
+    </g>
+
+    <g transform="translate(16, 244)">
+      <rect width="168" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="8" y="18" fill="#3fb950" font-size="10" font-weight="600">Tx 4: Supersede v2</text>
+      <text x="8" y="32" fill="#8b949e" font-size="9">Explicit lineage edge</text>
+    </g>
+
+    <g transform="translate(16, 292)">
+      <rect width="168" height="42" rx="4" fill="#0d1117" stroke="#21262d"/>
+      <text x="8" y="18" fill="#3fb950" font-size="10" font-weight="600">Tx 5: Review v2</text>
+      <text x="8" y="32" fill="#3fb950" font-size="9">Decision: APPROVED</text>
+    </g>
+  </g>
+</svg>

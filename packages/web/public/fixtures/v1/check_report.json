@@ -1,0 +1,280 @@
+{
+  "commitment": {
+    "checks": [
+      {
+        "checkId": "SOURCE_INTEGRITY",
+        "details": {
+          "artifacts": [
+            {
+              "artifactId": "boundary-kml",
+              "note": "Non-redistributed third-party artifact pinned by cryptographic commitment",
+              "sha256": "6c23a771351e6c3f04473a1af3d6d691819d07d0408ffd159808aacbffcba214",
+              "status": "PASS_EXTERNAL_PINNED"
+            },
+            {
+              "artifactId": "boundary_summary.json",
+              "sha256": "a250c8999f2ac906b406da8a2ecee72a0c968723c98285d122045e67b8f1a5e7",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "stac_completeness_index.json",
+              "sha256": "a1467a39dbd34f83594baa12051499741f7139f7ed27038f2fbd169b045708c7",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "hansen_stats.json",
+              "sha256": "506f2c43956618edd764ed4e16cd72b401590a0f9539be1a6dc8830870ac23c8",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "scene_metrics.json",
+              "sha256": "c1b971e1a98e47caeeee22f5bce7afb5c34373b4f129a3df255890253b499e91",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "sentinel2_quicklook.png",
+              "sha256": "6b3dfd1e76628dbbef35ff95df1de0b1adbb8011d750a1f9f19099bda0269085",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "vrod_retirement_audit.json",
+              "sha256": "c7ae942742b218ce3508971efe2429404eb09b822babadba4ed3dab9aaed6316",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "longitudinal_anomaly_radar.json",
+              "sha256": "8dd10b86306ad61ffad7e7c6c24d1346cdb4edcf432d7288c424fb8932707ee6",
+              "status": "PASS"
+            },
+            {
+              "artifactId": "field_photos_manifest.json",
+              "sha256": "f08ec4691395426dc4182bcf521a9fa1adcd61e3ddab54c3327905811e5072fc",
+              "status": "PASS"
+            }
+          ]
+        },
+        "name": "Cryptographic Source & Merkle Integrity",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "All distributed artifact SHA-256 hashes match commitments exactly"
+      },
+      {
+        "checkId": "SPATIAL_BOUNDARY",
+        "details": {
+          "intersectionCoveragePct": 100.0,
+          "placemarkCount": 478,
+          "polygonCount": 506,
+          "statedAreaHa": 4675.0
+        },
+        "name": "Spatial Boundary Intersection & Topology",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "Verified 506 restoration polygons across 478 placemarks within Sundarbans AoI; 100% spatial intersection with Sentinel-2 footprint"
+      },
+      {
+        "checkId": "TEMPORAL_COVERAGE",
+        "details": {
+          "disclosureNote": "Monitoring period dates are a transparent test fixture; official VCS 1463 monitoring report PDF dates are unread/unverified.",
+          "status": "UNVERIFIED_FIXTURE",
+          "window": {
+            "disclosureNote": "Monitoring period dates are a transparent test fixture; official VCS 1463 monitoring report PDF dates are unread/unverified.",
+            "endDate": "2023-12-31",
+            "startDate": "2023-01-01",
+            "verificationStatus": "UNVERIFIED_FIXTURE"
+          }
+        },
+        "name": "Temporal Monitoring Window & Crediting Period",
+        "reasonCode": "ALL_CHECKS_PASSED",
+        "status": "PASS",
+        "summary": "All scene timestamps fall within declared monitoring window [2023-01-01, 2023-12-31] (UNVERIFIED_FIXTURE)"
+      },
+      {
+        "checkId": "CLOUD_AND_TIDAL_GAP",
+        "details": {
+          "failingScenes": [
+            {
+              "issue": "CLOUD_GAP_EXCEEDED",
+              "observed": 74.48,
+              "sceneId": "S2B_45QYE_20231105_0_L2A",
+              "threshold": 20.0
+            }
+          ],
+          "thresholds": {
+            "maxCloud": 20.0,
+            "maxTide": 35.0
+          }
+        },
+        "name": "Cloud Cover & Tidal Inundation Gap Gate",
+        "reasonCode": "CLOUD_GAP_EXCEEDED",
+        "status": "FAIL",
+        "summary": "Satellite evidence exceeds quality thresholds: S2B_45QYE_20231105_0_L2A CLOUD_GAP_EXCEEDED (74.48% > 20.0%)"
+      },
+      {
+        "checkId": "STAC_COMPLETENESS",
+        "details": {
+          "minCandidateCloudPct": 0.0,
+          "omittedClearerScenes": [
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 7.7651,
+              "datetime": "2023-01-04",
+              "id": "S2A_45QXE_20230104_0_L2A",
+              "mgrsTile": "45QXE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/XE/2023/1/S2A_45QXE_20230104_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 7.6279,
+              "datetime": "2023-01-04",
+              "id": "S2A_45QYE_20230104_0_L2A",
+              "mgrsTile": "45QYE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/YE/2023/1/S2A_45QYE_20230104_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 0.0009,
+              "datetime": "2023-01-06",
+              "id": "S2B_45QXE_20230106_0_L2A",
+              "mgrsTile": "45QXE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/XE/2023/1/S2B_45QXE_20230106_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 0.0013,
+              "datetime": "2023-01-06",
+              "id": "S2B_45QYE_20230106_0_L2A",
+              "mgrsTile": "45QYE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/YE/2023/1/S2B_45QYE_20230106_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 0.0095,
+              "datetime": "2023-01-09",
+              "id": "S2B_45QXE_20230109_0_L2A",
+              "mgrsTile": "45QXE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/XE/2023/1/S2B_45QXE_20230109_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 0.0475,
+              "datetime": "2023-01-09",
+              "id": "S2B_45QYE_20230109_0_L2A",
+              "mgrsTile": "45QYE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/YE/2023/1/S2B_45QYE_20230109_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 0.0046,
+              "datetime": "2023-01-11",
+              "id": "S2A_45QXE_20230111_0_L2A",
+              "mgrsTile": "45QXE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/XE/2023/1/S2A_45QXE_20230111_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 0.0026,
+              "datetime": "2023-01-11",
+              "id": "S2A_45QYE_20230111_0_L2A",
+              "mgrsTile": "45QYE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/YE/2023/1/S2A_45QYE_20230111_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 1.0955,
+              "datetime": "2023-01-16",
+              "id": "S2B_45QXE_20230116_0_L2A",
+              "mgrsTile": "45QXE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/XE/2023/1/S2B_45QXE_20230116_0_L2A/SCL.tif"
+            },
+            {
+              "canonicalProcessingBaseline": "05.09",
+              "cloudCoverPct": 1.2788,
+              "datetime": "2023-01-16",
+              "id": "S2B_45QYE_20230116_0_L2A",
+              "mgrsTile": "45QYE",
+              "sclHref": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/45/Q/YE/2023/1/S2B_45QYE_20230116_0_L2A/SCL.tif"
+            }
+          ],
+          "outcome": "RATIONALE_REQUESTED",
+          "submittedCloudPct": 74.48
+        },
+        "name": "STAC Scene Selection Completeness (Anti-Cherry-Picking)",
+        "reasonCode": "INCOMPLETE_SCENE_SELECTION",
+        "status": "FAIL",
+        "summary": "Scene selection rationale requested: Submitted scene cloud cover (74.48%) passed over 179 clearer candidate scene(s) in window (e.g. S2A_45QXE_20230104_0_L2A with 7.7651% cloud). A developer selection rationale is requested."
+      },
+      {
+        "checkId": "SERIAL_INTEGRITY_ADVISORY",
+        "details": {
+          "overlaps": [
+            {
+              "advisoryNote": "Retirement claims CLAIM-2023-PRIMARY-01 and CLAIM-2023-DUP-09 reference an overlapping block of 2500 VCUs (319490001..319492500). Flagged for auditor reconciliation.",
+              "claimA": "CLAIM-2023-PRIMARY-01",
+              "claimB": "CLAIM-2023-DUP-09",
+              "overlappingRange": "319490001-319492500",
+              "overlappingUnits": 2500
+            }
+          ]
+        },
+        "name": "Berkeley VROD Retirement Serial & Cross-Registry Audit",
+        "reasonCode": "SERIAL_OVERLAP_DETECTED",
+        "status": "FAIL",
+        "summary": "Advisory Risk Flag: Detected 1 overlapping retirement serial block(s) totaling 2500 VCUs. Flagged for auditor verification."
+      },
+      {
+        "checkId": "LONGITUDINAL_ANOMALY_RADAR",
+        "details": {
+          "controlBufferMeanNdvi": 0.53,
+          "controlBufferStdNdvi": 0.06,
+          "decision": "FAIL",
+          "observedProjectNdvi": 0.28,
+          "opticalSarConsistencyStatus": "OPTICAL_SAR_DIVERGENCE",
+          "sarVhVvBackscatterDb": -11.4,
+          "summary": "Optical-SAR Divergence detected: Observed NDVI (0.28) deviates sharply from 10 km control buffer (Z = -4.17 < -3.5) while Sentinel-1 SAR backscatter remains intact (-11.4 dB), indicating cloud/shadow artifact.",
+          "year": 2023,
+          "zScoreGrowth": -4.17
+        },
+        "name": "Longitudinal Control-Buffer Z-Score Anomaly Radar",
+        "reasonCode": "OPTICAL_SAR_DIVERGENCE",
+        "status": "FAIL",
+        "summary": "Optical-SAR Divergence detected: Observed NDVI (0.28) deviates sharply from 10 km control buffer (Z = -4.17 < -3.5) while Sentinel-1 SAR backscatter remains intact (-11.4 dB), indicating cloud/shadow artifact."
+      },
+      {
+        "checkId": "FIELD_PHOTO_GEOFENCE_PROVENANCE",
+        "details": {
+          "failingPhotos": [
+            {
+              "capturedAtUtc": "2023-05-02T14:20:00Z",
+              "coordinates": [
+                88.581234,
+                21.782345
+              ],
+              "leafSha256": "6c9d1e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d",
+              "matchedPolygonId": "NONE",
+              "photoId": "FIELD-PHOTO-2023-03-ERR",
+              "reasonCode": "GEOFENCE_OUT_OF_BOUNDS",
+              "speciesObserved": "Sonneratia apetala (Wild stand)",
+              "status": "FAIL"
+            }
+          ],
+          "totalPhotos": 3
+        },
+        "name": "Geo-Pinned Field Photo Geofence Provenance",
+        "reasonCode": "GEOFENCE_OUT_OF_BOUNDS",
+        "status": "FAIL",
+        "summary": "Field photo provenance violation: Photo FIELD-PHOTO-2023-03-ERR failed verification (GEOFENCE_OUT_OF_BOUNDS)"
+      }
+    ],
+    "merkleRoot": "0x3cb222c9ba5d6dd99ebac7d51d1ff40ee8c5530e0a108d83a6f3e2a7f0e48ca4",
+    "overallRecommendedDecision": "NEEDS_EVIDENCE",
+    "packageHash": "0x4030177336e456e398419c05a34f41d1d816246c79e186b8f11d9c130a479c44",
+    "projectId": "VCS-1463",
+    "recommendedReasonCode": "CLOUD_GAP_EXCEEDED",
+    "schemaVersion": "1.0.0"
+  },
+  "provenance": {
+    "environment": "CCEL-Deterministic-Verification-Engine",
+    "evaluatedAtUtc": "2026-10-25T12:00:00Z",
+    "evaluatorEngineVersion": "0.2.0"
+  }
+}

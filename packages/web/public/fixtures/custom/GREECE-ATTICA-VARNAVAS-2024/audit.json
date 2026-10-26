@@ -1,0 +1,236 @@
+{
+  "status": "PROCESSED",
+  "verdict": "VERIFIED_READY",
+  "caseId": "GREECE-ATTICA-VARNAVAS-2024",
+  "title": "August 2024 Northeast Attica / Varnavas Wildfire",
+  "processedAt": "2026-10-25T21:22:23Z",
+  "processingTimeSeconds": 27.91,
+  "merkleRoot": "0x19cd4d65b5f13b9394c0f179b3ca173426b8ec76aa3fc9c027bb1a8db3d4249a",
+  "studyArea": {
+    "bboxWgs84": [
+      23.78,
+      38.04,
+      24.01,
+      38.27
+    ],
+    "mgrsTile": "34SGH",
+    "utmEpsg": "EPSG:32634",
+    "pixelResolutionMeters": 20.0,
+    "windowRows": [
+      2998,
+      4305
+    ],
+    "windowCols": [
+      2200,
+      3168
+    ],
+    "totalWindowAreaHa": 50607.0,
+    "validLandAreaHa": 48888.6
+  },
+  "preScene": {
+    "itemId": "S2A_34SGH_20240807_0_L2A",
+    "date": "2024-08-07",
+    "datetime": "2024-08-07T09:19:52.589000Z",
+    "cloudCoverPct": 1.22
+  },
+  "postScene": {
+    "itemId": "S2A_34SGH_20240817_0_L2A",
+    "date": "2024-08-17",
+    "datetime": "2024-08-17T09:19:51.773000Z",
+    "cloudCoverPct": 0.13,
+    "darkAndSmokeHa": 681.8,
+    "cloudAndShadowHa": 0.2
+  },
+  "censusScenes": [
+    {
+      "id": "S2A_34SGH_20240807_0_L2A",
+      "datetime": "2024-08-07T09:19:52.589000Z",
+      "cloudCoverPct": 1.22,
+      "platform": "sentinel-2a"
+    },
+    {
+      "id": "S2B_34SGH_20240812_0_L2A",
+      "datetime": "2024-08-12T09:19:55.718000Z",
+      "cloudCoverPct": 1.55,
+      "platform": "sentinel-2b"
+    },
+    {
+      "id": "S2A_34SGH_20240817_0_L2A",
+      "datetime": "2024-08-17T09:19:51.773000Z",
+      "cloudCoverPct": 0.13,
+      "platform": "sentinel-2a"
+    },
+    {
+      "id": "S2B_34SGH_20240822_0_L2A",
+      "datetime": "2024-08-22T09:19:50.693000Z",
+      "cloudCoverPct": 2.08,
+      "platform": "sentinel-2b"
+    }
+  ],
+  "selectedThreshold": 0.2,
+  "computedAreaHaAtSelectedThreshold": 10489.0,
+  "claimedAreaHa": 10489.0,
+  "keyMetrics": {
+    "areaAt020Ha": 10489.0,
+    "areaAt027Ha": 10204.4,
+    "areaAt044Ha": 9453.6,
+    "uncalibratedBiasAt044Ha": -2547.4,
+    "westSectorAtSelectedHa": 1275.4,
+    "eastSectorAtSelectedHa": 9213.6,
+    "meanNbrPreFire": 0.4384,
+    "meanNbrPostFire": -0.5933
+  },
+  "thresholdSensitivity": [
+    {
+      "threshold": 0.1,
+      "label": "USGS Unburned / Low Boundary (>= 0.10)",
+      "calibratedTotalHa": 10983.9,
+      "fireBWestHa": 1455.6,
+      "fireAEastHa": 9528.3,
+      "uncalibratedDnTotalHa": 10685.2,
+      "strictMaskExcludingDarkAndUnclassifiedHa": 10334.9
+    },
+    {
+      "threshold": 0.15,
+      "label": "Low Severity Lower Bound (>= 0.15)",
+      "calibratedTotalHa": 10711.2,
+      "fireBWestHa": 1349.8,
+      "fireAEastHa": 9361.4,
+      "uncalibratedDnTotalHa": 10344.2,
+      "strictMaskExcludingDarkAndUnclassifiedHa": 10063.1
+    },
+    {
+      "threshold": 0.2,
+      "label": "Low-to-Moderate Transition (>= 0.20)",
+      "calibratedTotalHa": 10489.0,
+      "fireBWestHa": 1275.4,
+      "fireAEastHa": 9213.6,
+      "uncalibratedDnTotalHa": 10000.7,
+      "strictMaskExcludingDarkAndUnclassifiedHa": 9842.1
+    },
+    {
+      "threshold": 0.27,
+      "label": "USGS Moderate-Low Severity (>= 0.27)",
+      "calibratedTotalHa": 10204.4,
+      "fireBWestHa": 1194.2,
+      "fireAEastHa": 9010.2,
+      "uncalibratedDnTotalHa": 9416.5,
+      "strictMaskExcludingDarkAndUnclassifiedHa": 9559.1
+    },
+    {
+      "threshold": 0.44,
+      "label": "USGS Moderate-High Severity (>= 0.44)",
+      "calibratedTotalHa": 9453.6,
+      "fireBWestHa": 1022.0,
+      "fireAEastHa": 8431.6,
+      "uncalibratedDnTotalHa": 6906.2,
+      "strictMaskExcludingDarkAndUnclassifiedHa": 8813.6
+    },
+    {
+      "threshold": 0.66,
+      "label": "USGS High Severity (>= 0.66)",
+      "calibratedTotalHa": 8112.8,
+      "fireBWestHa": 798.0,
+      "fireAEastHa": 7314.7,
+      "uncalibratedDnTotalHa": 2347.0,
+      "strictMaskExcludingDarkAndUnclassifiedHa": 7485.6
+    }
+  ],
+  "checks": [
+    {
+      "gate": "Gate 1 \u00b7 Canonical Envelope & Merkle Root",
+      "status": "PASS",
+      "detail": "8 Sentinel-2 L2A COG streams verified (96 DEFLATE tiles, digest 0x19cd4d65b5f1\u2026)"
+    },
+    {
+      "gate": "Gate 2 \u00b7 STAC Scene Census & Post-Containment Window",
+      "status": "PASS",
+      "detail": "4 tile-34SGH STAC scenes audited (2024-08-07 -> 2024-08-17); cloud/shadow 0.2 ha (0.0%)"
+    },
+    {
+      "gate": "Gate 3 \u00b7 Radiometric Offset Calibration (BOA -1000)",
+      "status": "PASS",
+      "detail": "ESA PB 05.xx BOA_ADD_OFFSET = -1000 applied (uncalibrated DN shift at >=0.44 is -2547.4 ha)"
+    },
+    {
+      "gate": "Gate 4 \u00b7 Threshold Sensitivity & Area Reconciliation",
+      "status": "PASS",
+      "detail": "Claimed 10,489.0 ha matches satellite COG dNBR >= 0.20 (10,489.0 ha; 0.10\u20130.66 curve published)"
+    },
+    {
+      "gate": "Gate 5 \u00b7 Spatial Sector Split & Land Mask Validity",
+      "status": "PASS",
+      "detail": "West sector 1,275.4 ha + East sector 9,213.6 ha = 10,489.0 ha across 48,888.6 ha valid land"
+    }
+  ],
+  "imageUrls": {
+    "preTci": "/fixtures/custom/GREECE-ATTICA-VARNAVAS-2024/pre_tci.png",
+    "postTci": "/fixtures/custom/GREECE-ATTICA-VARNAVAS-2024/post_tci.png",
+    "dnbrOverlay": "/fixtures/custom/GREECE-ATTICA-VARNAVAS-2024/dnbr_overlay.png",
+    "postComposite": "/fixtures/custom/GREECE-ATTICA-VARNAVAS-2024/post_composite.png"
+  },
+  "imageShas": {
+    "preTci": "f397cfe09b222739f3da1b1c4e6b3fa5c2b44e96d9cf6a511a389c404f83972e",
+    "postTci": "d184571325bf7e5a18af5f3608a97a6747911cbc6b9aa7034344f0b4a3957575",
+    "dnbrOverlay": "bb0bae7fc8c89910716f72b9bf8d14b41fea257f02f53ee914c3764adf0d0d3e",
+    "postComposite": "048d2751f8a94461198403935d84c3664fc67c53812c34e80a2a01f0f648fc28"
+  },
+  "cogRangeProvenance": [
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/34/S/GH/2024/8/S2A_34SGH_20240807_0_L2A/B8A.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4397793,
+      "rangePayloadSha256": "e4da530ea6dd32fbef9b240c8add319db346c8d69a2ebc0377805a55c237463b"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/34/S/GH/2024/8/S2A_34SGH_20240807_0_L2A/B12.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4346438,
+      "rangePayloadSha256": "d6a1edb9c930f8157d1aec1873e1ad0bc1445e7afdddc50ec960eddcb2873bd2"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/34/S/GH/2024/8/S2A_34SGH_20240807_0_L2A/SCL.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 292348,
+      "rangePayloadSha256": "a218280b620275db26c5ad3aec0b8748dae6e5af85dbf9c3de44d016f6a5401e"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/34/S/GH/2024/8/S2A_34SGH_20240807_0_L2A/TCI.tif",
+      "pageIndex": 1,
+      "tilesFetched": 12,
+      "bytesFetched": 7044551,
+      "rangePayloadSha256": "b4a3cff5243ea6610333e15f3a7a01449e62ab6cde31eaf76dd6e1998f0ceaa4"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/34/S/GH/2024/8/S2A_34SGH_20240817_0_L2A/B8A.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4381173,
+      "rangePayloadSha256": "4441865db27708643617aecba395922d210e8d3f607ecc6617db2460082cc345"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/34/S/GH/2024/8/S2A_34SGH_20240817_0_L2A/B12.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 4319307,
+      "rangePayloadSha256": "4ca0d628e633df4bfec9b8f0d13abb78ac4110b1fe2349f8f169a9a26caea96e"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/34/S/GH/2024/8/S2A_34SGH_20240817_0_L2A/SCL.tif",
+      "pageIndex": 0,
+      "tilesFetched": 12,
+      "bytesFetched": 260040,
+      "rangePayloadSha256": "72736a83f8e1958a7687b9f0bd967d7c90faa8c64a251eba2a683c8f64fcb19e"
+    },
+    {
+      "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/34/S/GH/2024/8/S2A_34SGH_20240817_0_L2A/TCI.tif",
+      "pageIndex": 1,
+      "tilesFetched": 12,
+      "bytesFetched": 6999737,
+      "rangePayloadSha256": "9e96fa007a33bbc5565438cf93929cdef50ad1547662574daf288da2c26be6f1"
+    }
+  ]
+}

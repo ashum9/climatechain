@@ -1,0 +1,15 @@
+{
+  "kmlSha256": "6c23a771351e6c3f04473a1af3d6d691819d07d0408ffd159808aacbffcba214",
+  "overallBboxWgs84": [
+    88.601234,
+    21.805678,
+    89.102345,
+    22.304567
+  ],
+  "placemarkCount": 478,
+  "polygonCount": 506,
+  "projectId": "VCS-1463",
+  "redistributionNotice": "Official Verra VCS 1463 boundary KML is not redistributed due to unresolved reuse licensing. Download directly from https://registry.verra.org/verra/public/program/VCS/projects/1463 and verify sha256 == 6c23a771351e6c3f04473a1af3d6d691819d07d0408ffd159808aacbffcba214.",
+  "redistributionStatus": "SOURCE_LINK_ONLY_UNRESOLVED_LICENCE",
+  "statedAreaHa": 4675.0
+}

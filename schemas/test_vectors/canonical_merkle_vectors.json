@@ -1,0 +1,106 @@
+{
+  "vector_1": {
+    "input": {
+      "b": -0.0,
+      "a": 1,
+      "c": "hello"
+    },
+    "canonical_json": "{\"a\":1,\"b\":0,\"c\":\"hello\"}"
+  },
+  "vector_2": {
+    "input": {
+      "z": [
+        3,
+        2,
+        1
+      ],
+      "x": {
+        "b": "Sundarbans",
+        "a": 4675
+      }
+    },
+    "canonical_json": "{\"x\":{\"a\":4675,\"b\":\"Sundarbans\"},\"z\":[3,2,1]}"
+  },
+  "vector_3_odd_merkle": {
+    "leaves": [
+      {
+        "id": "leaf_a",
+        "payload": {
+          "val": 10
+        }
+      },
+      {
+        "id": "leaf_b",
+        "payload": {
+          "val": 20
+        }
+      },
+      {
+        "id": "leaf_c",
+        "payload": {
+          "val": 30
+        }
+      }
+    ],
+    "root_hex": "0xe508b247ef238da85d46d4279615de3ebf510100ddc1bb1d782aed068a8e97c6",
+    "proof_leaf_a": [
+      {
+        "position": "right",
+        "hash": "0xb529302d45e7615a0199106c21dc9e1c135bcd278df4f70f2eea3e37bbdcd410"
+      },
+      {
+        "position": "right",
+        "hash": "0x858bfbf7a985797fef831bf75255b768214cc1a099f3b861e44119e5e769954f"
+      }
+    ]
+  },
+  "vector_4_even_merkle": {
+    "leaves": [
+      {
+        "id": "leaf_a",
+        "payload": {
+          "val": 10
+        }
+      },
+      {
+        "id": "leaf_b",
+        "payload": {
+          "val": 20
+        }
+      },
+      {
+        "id": "leaf_c",
+        "payload": {
+          "val": 30
+        }
+      },
+      {
+        "id": "leaf_d",
+        "payload": {
+          "val": 40
+        }
+      }
+    ],
+    "root_hex": "0xd9aebde96c83e638e6f5dfb14a6c52a091fe6cb37ab7975b85e0fc334acca55f",
+    "proof_leaf_c": [
+      {
+        "position": "right",
+        "hash": "0x63055415a556eab706734be5cd4a022353656b0cc146799e8b885d6a40ca94a4"
+      },
+      {
+        "position": "left",
+        "hash": "0x0c03e6e2b9b37c208661e82c69a7e6e1fa7f5f8111430710667f3f8175a1a182"
+      }
+    ]
+  },
+  "vector_5_package_hash": {
+    "commitment": {
+      "projectId": "VCS-1463",
+      "merkleRoot": "0xd9aebde96c83e638e6f5dfb14a6c52a091fe6cb37ab7975b85e0fc334acca55f",
+      "boundary": {
+        "kmlSha256": "6c23a771351e6c3f04473a1af3d6d691819d07d0408ffd159808aacbffcba214"
+      }
+    },
+    "package_hash": "0xad0eb8ec62a98c5349780e4c99bd2b058e4b08a4edaa27b0fd90024550e32579"
+  }
+}

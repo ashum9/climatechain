@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClimateChainEvidenceManifest",
+  "type": "object",
+  "required": ["commitment", "provenance"],
+  "properties": {
+    "commitment": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "packageVersion",
+        "projectId",
+        "methodology",
+        "registryUrl",
+        "boundary",
+        "monitoringWindow",
+        "selectionRule",
+        "artifacts",
+        "merkleRoot",
+        "derivedMetrics"
+      ],
+      "properties": {
+        "schemaVersion": { "type": "string", "enum": ["1.0.0"] },
+        "packageVersion": { "type": "string", "enum": ["v1", "v2"] },
+        "projectId": { "type": "string", "enum": ["VCS-1463"] },
+        "methodology": { "type": "string", "enum": ["AR-AM0014-v3"] },
+        "registryUrl": { "type": "string", "format": "uri" },
+        "boundary": {
+          "type": "object",
+          "required": ["kmlSha256", "statedAreaHa", "placemarkCount", "polygonCount"],
+          "properties": {
+            "kmlSha256": {
+              "type": "string",
+              "const": "6c23a771351e6c3f04473a1af3d6d691819d07d0408ffd159808aacbffcba214"
+            },
+            "statedAreaHa": { "type": "number", "const": 4675 },
+            "placemarkCount": { "type": "integer", "const": 478 },
+            "polygonCount": { "type": "integer", "const": 506 }
+          }
+        },
+        "monitoringWindow": {
+          "type": "object",
+          "required": ["startDate", "endDate", "verificationStatus"],
+          "properties": {
+            "startDate": { "type": "string", "format": "date" },
+            "endDate": { "type": "string", "format": "date" },
+            "verificationStatus": {
+              "type": "string",
+              "enum": ["UNVERIFIED_FIXTURE", "VERIFIED_FROM_REPORT"]
+            },
+            "disclosureNote": { "type": "string" }
+          }
+        },
+        "selectionRule": {
+          "type": "object",
+          "required": [
+            "maxCloudCoverPct",
+            "maxTidalInundationPct",
+            "completenessIndexSha256"
+          ],
+          "properties": {
+            "maxCloudCoverPct": { "type": "number", "minimum": 0, "maximum": 100 },
+            "maxTidalInundationPct": { "type": "number", "minimum": 0, "maximum": 100 },
+            "completenessIndexSha256": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{64}$"
+            }
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["artifactId", "role", "contentType", "byteLength", "sha256", "redistributedInPackage"],
+            "properties": {
+              "artifactId": { "type": "string" },
+              "role": { "type": "string" },
+              "contentType": { "type": "string" },
+              "byteLength": { "type": "integer", "minimum": 0 },
+              "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+              "redistributedInPackage": { "type": "boolean" }
+            }
+          }
+        },
+        "merkleRoot": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "derivedMetrics": {
+          "type": "object",
+          "required": ["scenes", "hansenSummary", "vrodSummary", "longitudinalRadarSummary", "fieldPhotosSummary"],
+          "properties": {
+            "scenes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["sceneId", "datetimeUtc", "sclCloudGapPct", "ndwiTidalInundationPct", "meanNdvi"],
+                "properties": {
+                  "sceneId": { "type": "string" },
+                  "datetimeUtc": { "type": "string" },
+                  "sclCloudGapPct": { "type": "number" },
+                  "ndwiTidalInundationPct": { "type": "number" },
+                  "meanNdvi": { "type": "number" }
+                }
+              }
+            },
+            "hansenSummary": { "type": "object" },
+            "vrodSummary": { "type": "object" },
+            "longitudinalRadarSummary": { "type": "object" },
+            "fieldPhotosSummary": { "type": "object" }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["builtAtUtc", "builderCliVersion", "environment", "packageHash"],
+      "properties": {
+        "builtAtUtc": { "type": "string" },
+        "builderCliVersion": { "type": "string" },
+        "environment": { "type": "string" },
+        "packageHash": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" }
+      }
+    }
+  }
+}

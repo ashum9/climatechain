@@ -1,0 +1,149 @@
+{
+  "commitment": {
+    "artifacts": [
+      {
+        "artifactId": "boundary-kml",
+        "byteLength": 0,
+        "contentType": "application/vnd.google-earth.kml+xml",
+        "redistributedInPackage": false,
+        "role": "OFFICIAL_BOUNDARY_COMMITMENT",
+        "sha256": "6c23a771351e6c3f04473a1af3d6d691819d07d0408ffd159808aacbffcba214"
+      },
+      {
+        "artifactId": "boundary_summary.json",
+        "byteLength": 637,
+        "contentType": "application/json",
+        "redistributedInPackage": true,
+        "role": "BOUNDARY_TOPOLOGY_SUMMARY",
+        "sha256": "a250c8999f2ac906b406da8a2ecee72a0c968723c98285d122045e67b8f1a5e7"
+      },
+      {
+        "artifactId": "stac_completeness_index.json",
+        "byteLength": 93216,
+        "contentType": "application/json",
+        "redistributedInPackage": true,
+        "role": "STAC_COMPLETENESS_INDEX",
+        "sha256": "a1467a39dbd34f83594baa12051499741f7139f7ed27038f2fbd169b045708c7"
+      },
+      {
+        "artifactId": "hansen_stats.json",
+        "byteLength": 1288,
+        "contentType": "application/json",
+        "redistributedInPackage": true,
+        "role": "GLOBAL_FOREST_CHANGE_SUMMARY",
+        "sha256": "506f2c43956618edd764ed4e16cd72b401590a0f9539be1a6dc8830870ac23c8"
+      },
+      {
+        "artifactId": "scene_metrics.json",
+        "byteLength": 256,
+        "contentType": "application/json",
+        "redistributedInPackage": true,
+        "role": "SENTINEL2_METRICS",
+        "sha256": "c1b971e1a98e47caeeee22f5bce7afb5c34373b4f129a3df255890253b499e91"
+      },
+      {
+        "artifactId": "sentinel2_quicklook.png",
+        "byteLength": 49339,
+        "contentType": "image/png",
+        "redistributedInPackage": true,
+        "role": "SENTINEL2_QUICKLOOK_IMAGE",
+        "sha256": "6b3dfd1e76628dbbef35ff95df1de0b1adbb8011d750a1f9f19099bda0269085"
+      },
+      {
+        "artifactId": "vrod_retirement_audit.json",
+        "byteLength": 1451,
+        "contentType": "application/json",
+        "redistributedInPackage": true,
+        "role": "VROD_RETIREMENT_AUDIT",
+        "sha256": "c7ae942742b218ce3508971efe2429404eb09b822babadba4ed3dab9aaed6316"
+      },
+      {
+        "artifactId": "longitudinal_anomaly_radar.json",
+        "byteLength": 2100,
+        "contentType": "application/json",
+        "redistributedInPackage": true,
+        "role": "LONGITUDINAL_ANOMALY_RADAR",
+        "sha256": "8dd10b86306ad61ffad7e7c6c24d1346cdb4edcf432d7288c424fb8932707ee6"
+      },
+      {
+        "artifactId": "field_photos_manifest.json",
+        "byteLength": 1720,
+        "contentType": "application/json",
+        "redistributedInPackage": true,
+        "role": "FIELD_PHOTOS_MANIFEST",
+        "sha256": "f08ec4691395426dc4182bcf521a9fa1adcd61e3ddab54c3327905811e5072fc"
+      }
+    ],
+    "boundary": {
+      "kmlSha256": "6c23a771351e6c3f04473a1af3d6d691819d07d0408ffd159808aacbffcba214",
+      "placemarkCount": 478,
+      "polygonCount": 506,
+      "statedAreaHa": 4675.0
+    },
+    "derivedMetrics": {
+      "fieldPhotosSummary": {
+        "allInsidePolygons": false,
+        "totalPhotos": 3
+      },
+      "hansenSummary": {
+        "totalAoIPixels": 4005982,
+        "treecover2000MeanPct": 18.88,
+        "version": "GFC-2025-v1.13"
+      },
+      "longitudinalRadarSummary": {
+        "opticalSarConsistencyStatus": "OPTICAL_SAR_DIVERGENCE",
+        "zScoreGrowth": -4.17
+      },
+      "scenes": [
+        {
+          "aoiCloudCoverPct": 74.48,
+          "aoiUsablePct": 25.52,
+          "datetimeUtc": "2023-11-05T04:52:28.645000Z",
+          "meanNdvi": 0.28,
+          "ndwiTidalInundationPct": 42.1,
+          "sceneId": "S2B_45QYE_20231105_0_L2A",
+          "sclCloudGapPct": 74.48,
+          "tileCloudCoverPct": 59.97
+        }
+      ],
+      "vrodSummary": {
+        "advisoryStatus": "SERIAL_OVERLAP_DETECTED",
+        "overlappingBatchesDetected": 1,
+        "totalBatchesAudited": 3
+      }
+    },
+    "merkleRoot": "0x3cb222c9ba5d6dd99ebac7d51d1ff40ee8c5530e0a108d83a6f3e2a7f0e48ca4",
+    "methodology": "AR-AM0014-v3",
+    "monitoringWindow": {
+      "disclosureNote": "Monitoring period dates are a transparent test fixture; official VCS 1463 monitoring report PDF dates are unread/unverified.",
+      "endDate": "2023-12-31",
+      "startDate": "2023-01-01",
+      "verificationStatus": "UNVERIFIED_FIXTURE"
+    },
+    "packageVersion": "v1",
+    "projectId": "VCS-1463",
+    "registryUrl": "https://registry.verra.org/verra/public/program/VCS/projects/1463",
+    "schemaVersion": "1.0.0",
+    "selectionRule": {
+      "completenessIndexSha256": "a1467a39dbd34f83594baa12051499741f7139f7ed27038f2fbd169b045708c7",
+      "maxCloudCoverPct": 20.0,
+      "maxTidalInundationPct": 35.0,
+      "minUsablePct": 80.0,
+      "preferredRule": "MAX_USABLE_AREA",
+      "season": "Nov-Feb (Post-Monsoon)",
+      "targetSeasonMonths": [
+        "11",
+        "12",
+        "01",
+        "02"
+      ],
+      "tieBreak": "CLOSEST_TO_MID_SEASON"
+    }
+  },
+  "provenance": {
+    "builderCliVersion": "0.2.0",
+    "builtAtUtc": "2026-10-25T12:00:00Z",
+    "environment": "CCEL-Deterministic-Package-Builder",
+    "packageHash": "0x4030177336e456e398419c05a34f41d1d816246c79e186b8f11d9c130a479c44"
+  }
+}

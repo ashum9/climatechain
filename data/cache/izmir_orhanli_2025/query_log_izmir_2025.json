@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "ccel-census/1.0",
+  "retrievedAtUtc": "2026-10-25T14:16:45Z",
+  "queryDefinition": {
+    "schemaVersion": "ccel-census/1.0",
+    "collection": "sentinel-2-l2a",
+    "aoi": {
+      "type": "bbox",
+      "bboxWgs84": [
+        26.78,
+        38.03,
+        27.08,
+        38.23
+      ],
+      "source": "IZMIR_ORHANLI_BBOX_WGS84"
+    },
+    "datetime": "2025-06-15T00:00:00Z/2025-07-31T23:59:59Z",
+    "pageLimit": 100,
+    "primaryCatalog": "earth-search",
+    "secondaryCatalog": "planetary-computer",
+    "dedupRule": "Items are grouped by acquisition key = (s2:datatake_id with the trailing processing-baseline suffix removed, MGRS tile). Within a group the canonical item is the one with the highest s2:processing_baseline, then the latest s2:generation_time, then item id. All variants are retained."
+  },
+  "requests": {
+    "earth-search": [
+      {
+        "pageIndex": 0,
+        "requestMethod": "POST",
+        "requestUrl": "https://earth-search.aws.element84.com/v1/search",
+        "requestBody": {
+          "collections": [
+            "sentinel-2-l2a"
+          ],
+          "bbox": [
+            26.78,
+            38.03,
+            27.08,
+            38.23
+          ],
+          "datetime": "2025-06-15T00:00:00Z/2025-07-31T23:59:59Z",
+          "limit": 100
+        },
+        "httpStatus": 200,
+        "responseSha256": "1da399e0a1d872cd0f106f73ae303d905edd228eedc93c98597b5e901a1a9ee3",
+        "responseBytes": 584989,
+        "numberMatched": 28,
+        "numberReturned": 28,
+        "itemIds": [
+          "S2C_35SMC_20250730_0_L2A",
+          "S2C_35SNC_20250730_0_L2A",
+          "S2B_35SMC_20250725_0_L2A",
+          "S2B_35SNC_20250725_0_L2A",
+          "S2A_35SMC_20250722_0_L2A",
+          "S2A_35SNC_20250722_0_L2A",
+          "S2C_35SMC_20250720_0_L2A",
+          "S2C_35SNC_20250720_0_L2A",
+          "S2B_35SMC_20250715_1_L2A",
+          "S2B_35SNC_20250715_0_L2A",
+          "S2A_35SMC_20250712_0_L2A",
+          "S2A_35SNC_20250712_1_L2A",
+          "S2C_35SMC_20250710_0_L2A",
+          "S2C_35SNC_20250710_0_L2A",
+          "S2B_35SMC_20250705_0_L2A",
+          "S2B_35SNC_20250705_0_L2A",
+          "S2A_35SMC_20250702_0_L2A",
+          "S2A_35SNC_20250702_1_L2A",
+          "S2C_35SMC_20250630_0_L2A",
+          "S2C_35SNC_20250630_0_L2A",
+          "S2B_35SMC_20250625_1_L2A",
+          "S2B_35SNC_20250625_0_L2A",
+          "S2A_35SMC_20250622_0_L2A",
+          "S2A_35SNC_20250622_1_L2A",
+          "S2C_35SMC_20250620_0_L2A",
+          "S2C_35SNC_20250620_0_L2A",
+          "S2B_35SMC_20250615_0_L2A",
+          "S2B_35SNC_20250615_0_L2A"
+        ]
+      },
+      {
+        "pageIndex": 1,
+        "requestMethod": "POST",
+        "requestUrl": "https://earth-search.aws.element84.com/v1/search",
+        "requestBody": {
+          "datetime": "2025-06-15T00:00:00Z/2025-07-31T23:59:59Z",
+          "collections": [
+            "sentinel-2-l2a"
+          ],
+          "bbox": [
+            26.78,
+            38.03,
+            27.08,
+            38.23
+          ],
+          "limit": 100,
+          "next": "2025-06-15T09:09:41.748000Z,S2B_35SNC_20250615_0_L2A,sentinel-2-l2a"
+        },
+        "httpStatus": 200,
+        "responseSha256": "e8113d65ffc2711f51c9be9aeedbff02cbf01204895d7aac5f9ce09c0f1fd14f",
+        "responseBytes": 276,
+        "numberMatched": 28,
+        "numberReturned": 0,
+        "itemIds": []
+      }
+    ],
+    "planetary-computer": [
+      {
+        "pageIndex": 0,
+        "requestMethod": "POST",
+        "requestUrl": "https://planetarycomputer.microsoft.com/api/stac/v1/search",
+        "requestBody": {
+          "collections": [
+            "sentinel-2-l2a"
+          ],
+          "bbox": [
+            26.78,
+            38.03,
+            27.08,
+            38.23
+          ],
+          "datetime": "2025-06-15T00:00:00Z/2025-07-31T23:59:59Z",
+          "limit": 100
+        },
+        "httpStatus": 200,
+        "responseSha256": "265f267067d9ac8b45e8c223ea33b062b0f331da743db93ae1ab18aae11565c4",
+        "responseBytes": 425030,
+        "numberMatched": null,
+        "numberReturned": 28,
+        "itemIds": [
+          "S2C_MSIL2A_20250730T085621_R007_T35SNC_20250730T142817",
+          "S2C_MSIL2A_20250730T085621_R007_T35SMC_20250730T142817",
+          "S2B_MSIL2A_20250725T085559_R007_T35SNC_20250725T113316",
+          "S2B_MSIL2A_20250725T085559_R007_T35SMC_20250725T113316",
+          "S2A_MSIL2A_20250722T090411_R007_T35SNC_20250722T112614",
+          "S2A_MSIL2A_20250722T090411_R007_T35SMC_20250722T112614",
+          "S2C_MSIL2A_20250720T085621_R007_T35SNC_20250720T145115",
+          "S2C_MSIL2A_20250720T085621_R007_T35SMC_20250720T145115",
+          "S2B_MSIL2A_20250715T085559_R007_T35SNC_20250715T112743",
+          "S2B_MSIL2A_20250715T085559_R007_T35SMC_20250715T112743",
+          "S2A_MSIL2A_20250712T085721_R007_T35SNC_20250712T130358",
+          "S2A_MSIL2A_20250712T085721_R007_T35SMC_20250712T130358",
+          "S2C_MSIL2A_20250710T085621_R007_T35SNC_20250710T144115",
+          "S2C_MSIL2A_20250710T085621_R007_T35SMC_20250710T144115",
+          "S2B_MSIL2A_20250705T085559_R007_T35SNC_20250705T100717",
+          "S2B_MSIL2A_20250705T085559_R007_T35SMC_20250705T100717",
+          "S2A_MSIL2A_20250702T090411_R007_T35SNC_20250702T113018",
+          "S2A_MSIL2A_20250702T090411_R007_T35SMC_20250702T113018",
+          "S2C_MSIL2A_20250630T085621_R007_T35SNC_20250630T143419",
+          "S2C_MSIL2A_20250630T085621_R007_T35SMC_20250630T143419",
+          "S2B_MSIL2A_20250625T085559_R007_T35SNC_20250625T115539",
+          "S2B_MSIL2A_20250625T085559_R007_T35SMC_20250625T115539",
+          "S2A_MSIL2A_20250622T085721_R007_T35SNC_20250622T114316",
+          "S2A_MSIL2A_20250622T085721_R007_T35SMC_20250622T114316",
+          "S2C_MSIL2A_20250620T085611_R007_T35SNC_20250620T114819",
+          "S2C_MSIL2A_20250620T085611_R007_T35SMC_20250620T114819",
+          "S2B_MSIL2A_20250615T085559_R007_T35SNC_20250615T101538",
+          "S2B_MSIL2A_20250615T085559_R007_T35SMC_20250615T101538"
+        ]
+      }
+    ]
+  }
+}

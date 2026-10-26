@@ -1,0 +1,51 @@
+# Node
+node_modules/
+dist/
+.vite/
+.vercel/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.pytest_cache/
+*.egg-info/
+
+# Foundry
+packages/contracts/broadcast/
+packages/contracts/cache/
+packages/contracts/out/
+broadcast/
+out/
+
+# Environment and sensitive keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.keystore
+*secret*
+!scripts/licence_and_secret_guard.py
+*mnemonic*
+
+# Data, temporary files & licence-restricted raw files
+data/raw_verra/
+.cache/
+*.kml
+*.kmz
+/tmp/
+*.crdownload
+*.zip
+*.mkv
+*.mp4
+*.avi
+*.mov
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ClimateChain Evidence Ledger — Verify the claim, not the headline</title>
+<meta name="description" content="Independent cryptographic verification for environmental claims and carbon market baselines. Real Sentinel-2 telemetry, deterministic quality gates, Ethereum Sepolia audit trail." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Fustat:wght@500;700;800&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="/src/styles/editorial.css" />
+</head>
+<body>
+<div class="scroll-progress" id="nav-progress"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+<span>SEPOLIA LIVE · 0xb1ce…210f</span><i>◆</i><span>SENTINEL-2 L2A MODULE · ANY MGRS TILE</span><i>◆</i><span>9,726.2 HA CONTAINED · İZMİR 5 JUL 2025</span><i>◆</i><span>RFC 8785 · RFC 6962 · BOA −1000</span><i>◆</i><span>EXPOSE MISSING EVIDENCE — NOT ACCUSATIONS</span><i>◆</i>
+<span>SEPOLIA LIVE · 0xb1ce…210f</span><i>◆</i><span>SENTINEL-2 L2A MODULE · ANY MGRS TILE</span><i>◆</i><span>9,726.2 HA CONTAINED · İZMİR 5 JUL 2025</span><i>◆</i><span>RFC 8785 · RFC 6962 · BOA −1000</span><i>◆</i><span>EXPOSE MISSING EVIDENCE — NOT ACCUSATIONS</span><i>◆</i>
+</div></div>
+
+<nav class="topnav">
+<a class="brand" href="#/overview"><span class="brand-mark">◈</span> CCEL <span class="brand-sub">ClimateChain Evidence Ledger</span></a>
+<div class="nav-links" role="navigation" aria-label="Product">
+<a href="#/overview" data-route="overview">Overview</a>
+<a href="#/cases" data-route="cases">Cases <span class="nav-count" id="nav-case-count">2</span></a>
+<a href="#/case/izmir" data-route="case">Case workspace</a>
+<a href="#/submit" data-route="submit">Submit claim</a>
+<a href="#/ledger" data-route="ledger">Ledger</a>
+<a href="#/verify" data-route="verify">Verify system</a>
+<a href="#/lab" data-route="lab">Scenario lab</a>
+</div>
+<div class="nav-right">
+<span class="story-badge teal" id="rpc-status-badge">Sepolia: Connected</span>
+<button class="btn btn-dark btn-sm" id="btn-connect-wallet" type="button">Connect wallet</button>
+</div>
+</nav>
+<div class="wallet-bar" id="wallet-bar" hidden>
+<span id="wallet-bar-text">Wallet connected</span>
+<a class="ft-link" href="https://sepolia.etherscan.io" target="_blank" rel="noopener">Sepolia explorer ↗</a>
+</div>
+
+<div class="page" id="top">
+
+<!-- ═══════════ VIEW: OVERVIEW ═══════════ -->
+<div data-view="overview">
+<header class="hero reveal in">
+<div class="hero-grid">
+<div>
+<span class="kicker">Independent Verification Protocol · Earth Observation &amp; Carbon Integrity</span>
+<h1 class="hero-title">Verify the claim,<br/><em>not the headline.</em></h1>
+<p class="hero-lede">An open cryptographic evidence ledger that holds environmental claims and carbon market baselines accountable to raw Earth observation. Submitters package reproducible Sentinel-2 satellite telemetry, automated quality gates detect cherry-picked scenes and hidden calibration offsets, and every audit trail, challenge, and supersession is anchored immutably on Ethereum Sepolia — with zero backend trust.</p>
+<div class="hero-ctas">
+<a class="btn btn-claret" href="#/submit">Submit a claim for review <span>→</span></a>
+<a class="btn btn-ghost" href="#/cases">Open case registry</a>
+<a class="btn btn-ghost" href="#/verify">Run system verification</a>
+</div>
+<div class="hero-meta">
+<span><strong>Operational module</strong> Sentinel-2 L2A Disturbance &amp; Baseline Verification · any MGRS tile</span>
+<span><strong>Anchored case</strong> June 2025 İzmir Disturbance · Tile 35SMC · 6 Sepolia transactions</span>
+<a id="etherscan-contract-link" href="https://sepolia.etherscan.io/address/0xb1ce2e8ceb392ad3bf0e011d05689058dfa9210f" target="_blank" rel="noopener" class="ft-link">Contract 0xb1ce…210f on Etherscan ↗</a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-img-wrap">
+  <div class="split-slider-container hero-split-slider" id="hero-split-slider" data-split-slider tabindex="0" role="region" aria-label="Interactive Hero Before and After satellite wipe">
+    <div class="split-layer split-before">
+      <img src="/fixtures/izmir_orhanli_2025/tci_20250625.png" alt="Pre-Fire True Color (25 June 2025)" />
+    </div>
+    <div class="split-layer split-after" id="hero-split-after">
+      <img src="/fixtures/izmir_orhanli_2025/composite_20250705.png" alt="Contained Burn Scar (5 July 2025)" />
+    </div>
+    <div class="split-handle" id="hero-split-handle">
+      <div class="split-handle-btn"><i data-lucide="move-horizontal"></i></div>
+    </div>
+  </div>
+  <div class="hero-img-tag">FIG. 0 — dNBR · 5 JUL 2025 · 35SMC</div>
+  <div class="hero-chip chip-a"><strong>9,726.2 ha</strong><span>contained · dNBR ≥ 0.20</span></div>
+  <div class="hero-chip chip-b"><strong>+24.6%</strong><span>after 30 June overpass</span></div>
+</div>
+<p class="hero-caption">Real Copernicus Sentinel-2 L2A 20 m COGs via AWS Open Data. Drag slider to wipe between 25 June pre-fire baseline and 5 July contained burn scar. Raster dNBR is computed by the open CLI; the browser hashes, gates and anchors. No simulated panels.</p>
+</div>
+</div>
+<div class="hero-stats">
+<div class="hstat"><div class="hstat-num" data-count="7819.6" data-decimals="1">0</div><div class="hstat-label">NERO reference · 30 June (ha)</div></div>
+<div class="hstat"><div class="hstat-num claret" data-count="7808.6" data-decimals="1">0</div><div class="hstat-label">CCEL 30 June · dNBR ≥ 0.20 (ha)</div></div>
+<div class="hstat"><div class="hstat-num teal" data-count="9726.2" data-decimals="1">0</div><div class="hstat-label">Contained · 5 July (ha)</div></div>
+<div class="hstat"><div class="hstat-num amber" data-count="1703.6" data-decimals="1" data-prefix="−">0</div><div class="hstat-label">Offset bias if BOA −1000 omitted (ha)</div></div>
+</div>
+</header>
+
+<section class="ops reveal in" aria-label="Operations dashboard">
+<div class="ops-head"><div><span class="kicker">Mission control</span><h2 class="ops-title">Today on the desk</h2></div><span class="story-badge oxford" id="ops-updated">Live from fixtures + Sepolia RPC</span></div>
+<div class="ops-grid">
+<div class="ops-card"><span class="ops-label">Anchored packages</span><strong id="ops-anchored">2</strong><p>v1 challenged → v2 approved. Lineage preserved on-chain.</p><a href="#/cases" class="ft-link">View registry →</a></div>
+<div class="ops-card"><span class="ops-label">Needs evidence</span><strong class="claret" id="ops-needs">1</strong><p>Package v1 · <code>NEEDS_EVIDENCE</code> · rationale requested, not accused.</p><a href="#/case/izmir" class="ft-link">Open workspace →</a></div>
+<div class="ops-card"><span class="ops-label">Local drafts (this browser)</span><strong id="ops-drafts">0</strong><p id="ops-drafts-desc">Drafts you build in Submit live only here until you anchor them with your wallet.</p><a href="#/submit" class="ft-link">New submission →</a></div>
+<div class="ops-card dark"><span class="ops-label">System health</span><strong id="ops-health">Checking…</strong><p id="ops-health-desc">Fixtures, canonical hashing and Sepolia RPC.</p><a href="#/verify" class="ft-link light">Run full verification →</a></div>
+</div>
+<div class="ops-cols">
+<div class="ops-panel">
+<h3>Review queue</h3>
+<div id="queue-list"></div>
+</div>
+<div class="ops-panel">
+<h3>How a claim moves</h3>
+<ol class="flow">
+<li><div><strong>Submit</strong><span>Wizard builds an RFC 8785 envelope for any tile and hashes it in your browser.</span></div></li>
+<li><div><strong>Gatekeep</strong><span>Five gates check envelope, bounding, census/timing, calibration/sensitivity, recovery limits.</span></div></li>
+<li><div><strong>Inspect</strong><span>Auditors interrogate curves, four-date imagery and the map before deciding.</span></div></li>
+<li><div><strong>Anchor</strong><span>Wallet-signed Sepolia transactions make reviews and challenges permanent.</span></div></li>
+</ol>
+<p class="boundary-note"><strong>Honest boundary:</strong> the browser verifies envelopes, method disclosure and anchored evidence. Pixel-level dNBR for a new tile is computed by the open CLI (<code>izmir_dnbr.py</code> pattern) and its outputs are hashed into the package — the UI never invents raster results.</p>
+</div>
+</div>
+</section>
+
+<!-- ═══ LIVE EVIDENCE & SENSITIVITY SHOWCASE (LANDING PAGE HOOK) ═══ -->
+<section class="story-card reveal in" id="overview-evidence-hook">
+<div class="story-header">
+<div><span class="kicker">Live Satellite Evidence &amp; Sensitivity Lab</span><h2 class="story-title">Interact directly with the ground-truth evidence</h2></div>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+<span class="story-badge teal">Live Telemetry Hook</span>
+<a class="btn btn-claret btn-sm" href="#/case/izmir">Open Full Workspace →</a>
+</div>
+</div>
+<p class="section-intro">Traditional climate reporting presents a static burn hectare headline. CCEL allows you to independently wipe between satellite acquisitions, inspect the 4-date multi-temporal census, and drag the burn-severity threshold to expose hidden sensitivity and calibration biases.</p>
+
+<!-- Part A: Interactive Before/After Satellite Wipe & 4-Date Census -->
+<div class="fig-block" style="margin-bottom: 28px;">
+<div class="split-slider-box">
+  <div class="split-slider-head">
+    <span class="split-slider-title"><i data-lucide="layers"></i> Interactive Before/After Satellite Wipe</span>
+    <span class="fig-note">Drag slider or move pointer across to wipe between 25 June Pre-Fire baseline and 5 July Contained Scar (9,726.2 ha)</span>
+  </div>
+  <div class="split-slider-container" id="landing-split-slider" data-split-slider tabindex="0" role="region" aria-label="Satellite Before and After wipe comparison">
+    <div class="split-layer split-before">
+      <img src="/fixtures/izmir_orhanli_2025/tci_20250625.png" alt="Pre-Fire True Color (25 June 2025)" />
+      <span class="split-pill split-pill-left"><i data-lucide="leaf"></i> Pre-Fire · 25 June 2025</span>
+    </div>
+    <div class="split-layer split-after">
+      <img src="/fixtures/izmir_orhanli_2025/composite_20250705.png" alt="Contained Burn Scar (5 July 2025)" />
+      <span class="split-pill split-pill-right"><i data-lucide="flame"></i> Contained · 5 July 2025 (9,726.2 ha)</span>
+    </div>
+    <div class="split-handle">
+      <div class="split-handle-btn"><i data-lucide="move-horizontal"></i></div>
+    </div>
+  </div>
+</div>
+
+<div class="multiples-grid" style="margin-top: 14px;">
+<div class="multiple-panel"><div class="multiple-title">1 · Pre-fire — 25 June 2025</div><div class="multiple-meta"><code>S2B_35SMC_20250625_1_L2A</code> · 0.02% cloud</div><img class="multiple-img" src="/fixtures/izmir_orhanli_2025/tci_20250625.png" alt="Pre-fire true colour, 25 June 2025" loading="lazy" /><p>Intact pine forest and maquis, four days before the 29 June 09:57 UTC ignition.</p></div>
+<div class="multiple-panel selected-failure"><div class="multiple-title">2 · Active fire — 30 June 2025</div><div class="multiple-meta"><code>S2C_35SMC_20250630_0_L2A</code> · NERO overpass</div><img class="multiple-img" src="/fixtures/izmir_orhanli_2025/tci_20250630.png" alt="Active fire true colour, 30 June 2025" loading="lazy" /><p>1,957.5 ha under active smoke / dark char (SCL 2 &amp; 7). Fire B still spreading.</p></div>
+<div class="multiple-panel selected-success"><div class="multiple-title">3 · Contained — 5 July 2025</div><div class="multiple-meta"><code>S2B_35SMC_20250705_0_L2A</code> · smoke-free</div><img class="multiple-img" src="/fixtures/izmir_orhanli_2025/composite_20250705.png" alt="Contained dNBR burn map, 5 July 2025" loading="lazy" /><p>Smoke-free perimeter. +1,917.6 ha (+24.6%) of post–30 June expansion revealed.</p></div>
+<div class="multiple-panel"><div class="multiple-title">4 · Anniversary — 25 June 2026</div><div class="multiple-meta"><code>S2C_35SMC_20260625_0_L2A</code> · 0.015% cloud</div><img class="multiple-img" src="/fixtures/izmir_orhanli_2025/composite_20260625.png" alt="One-year follow-up composite, 25 June 2026" loading="lazy" /><p>1-year anniversary (25 June 2026): Mean NBR over burned scar shifted from −0.6205 to +0.1619 (herbaceous rebound, not replanting).</p></div>
+</div>
+</div>
+
+<!-- Part B: Interactive Threshold & Method Sensitivity Explorer -->
+<div class="fig-block">
+<div class="fig-header">
+<div>
+<h3 style="font-family: var(--font-serif); font-size: 19px; color: var(--ft-ink); margin: 0;">Interactive Threshold &amp; Method Sensitivity</h3>
+<p class="fig-sub" style="margin: 2px 0 0;">Drag the threshold slider to see how a single reported hectare number is unscientific without publishing the full curve and calibration offset.</p>
+</div>
+<div class="thresh-controls">
+<label for="landing-threshold-range">dNBR threshold <output id="landing-threshold-output">≥ 0.20</output></label>
+<input type="range" id="landing-threshold-range" min="0" max="5" step="1" value="2" aria-label="Landing dNBR threshold" />
+<label class="sr-only" for="landing-select-threshold">Highlight dNBR threshold</label>
+<select id="landing-select-threshold">
+<option value="0.10">dNBR ≥ 0.10 · USGS Low boundary</option>
+<option value="0.15">dNBR ≥ 0.15 · Low severity</option>
+<option value="0.20" selected>dNBR ≥ 0.20 · Low–moderate</option>
+<option value="0.27">dNBR ≥ 0.27 · Moderate-low</option>
+<option value="0.44">dNBR ≥ 0.44 · Moderate-high</option>
+<option value="0.66">dNBR ≥ 0.66 · High severity</option>
+</select>
+</div>
+</div>
+<div class="chart-legend">
+<span class="legend-item"><span class="legend-dot teal"></span> 5 July 2025 contained (calibrated)</span>
+<span class="legend-item"><span class="legend-dot claret"></span> 30 June 2025 provisional (calibrated)</span>
+<span class="legend-item"><span class="legend-dot gray"></span> 30 June uncalibrated raw DN</span>
+</div>
+<div class="chart-container" id="landing-census-chart-box">
+<svg id="landing-census-svg" class="census-chart-svg" viewBox="0 0 1000 360" role="img" aria-label="dNBR threshold sensitivity chart"></svg>
+</div>
+<div id="landing-chart-tooltip" class="chart-tooltip"></div>
+<p class="fig-note" style="margin-top: 8px;">
+Across dNBR 0.15–0.44 the estimate spans 7,963.1 → 7,227.7 ha (735.4 ha). Omitting ESA Processing Baseline 05.xx additive offset (<code>BOA_ADD_OFFSET = −1000</code>) causes an artificial undercount of −1,703.6 ha (−23.6%). Publishing the curve — not a point — is the reproducibility requirement.
+</p>
+</div>
+</section>
+
+<!-- ═══ SYSTEM ARCHITECTURE & INTEGRITY GUARANTEES ═══ -->
+<section class="story-card reveal in" id="overview-guarantees">
+<div class="story-header"><div><span class="kicker">Core System Architecture &amp; Verification Guarantees</span><h2 class="story-title">A claim cannot outrun its evidence</h2></div><span class="story-badge oxford">4 Integrity Guarantees · Zero-Trust Architecture</span></div>
+<p class="section-intro">Four deterministic verification guarantees executed directly in your browser and anchored on Ethereum Sepolia — replacing unaudited PDF claims with verifiable satellite telemetry.</p>
+
+<div class="guarantees-grid">
+<div class="guarantee-card">
+<div class="guarantee-head"><span class="story-badge teal">Guarantee 1</span><code class="ft-mono">Anti-Cherry-Picking</code></div>
+<h3>Exhaustive Scene Census</h3>
+<p>Multi-catalog STAC pagination (284 scenes) flags omitted clearer or post-containment overpasses automatically.</p>
+<div class="guarantee-highlight">284 scenes reconciled · 0 discrepancies</div>
+</div>
+
+<div class="guarantee-card">
+<div class="guarantee-head"><span class="story-badge claret">Guarantee 2</span><code class="ft-mono">Anti-Single-Point Bias</code></div>
+<h3>Method Sensitivity Disclosure</h3>
+<p>Mandates 6-tier USGS curves and ESA baseline calibration (<code>BOA = −1000</code>), eliminating hidden offset distortion.</p>
+<div class="guarantee-highlight">6-tier USGS curve · 735.4 ha spread disclosed</div>
+</div>
+
+<div class="guarantee-card">
+<div class="guarantee-head"><span class="story-badge oxford">Guarantee 3</span><code class="ft-mono">Permanent Audit Trail</code></div>
+<h3>Immutable Lineage &amp; Timing</h3>
+<p>Disputes and supersessions stay permanently on Sepolia in an acyclic DAG. Retrospective rules are flagged <code>POST_HOC</code>.</p>
+<div class="guarantee-highlight">Contract 0xb1ce…210f · 6 immutable txs</div>
+</div>
+
+<div class="guarantee-card">
+<div class="guarantee-head"><span class="story-badge amber">Guarantee 4</span><code class="ft-mono">Zero-Backend Trust</code></div>
+<h3>Pure Client-Side Proofs</h3>
+<p>Browser WebCrypto computes canonical JSON (RFC 8785) and Merkle roots (RFC 6962) with Python byte parity.</p>
+<div class="guarantee-highlight">WebCrypto SHA-256 · RFC 8785 + RFC 6962</div>
+</div>
+</div>
+
+<div class="arch-section-divider">
+<div class="story-header" style="margin-top: 26px; margin-bottom: 12px;">
+<div><span class="kicker">System Architecture &amp; Telemetry Router</span><h3 style="font-family: var(--font-serif); font-size: 22px; color: var(--ft-ink); margin: 3px 0 0;">From Raw Satellite Telemetry to Cryptographic Settlement</h3></div>
+<span class="story-badge oxford" id="arch-active-badge">Stage 1: Remote Sensing Ingestion</span>
+</div>
+<p class="section-intro" style="margin-bottom: 20px;">Every step of the verification pipeline is deterministic, client-verifiable, and reproducible. Click any architecture node below to inspect its data routing, mathematical formulas, and cryptographic invariants.</p>
+</div>
+
+<!-- Architecture Diagram Visual Grid -->
+<div class="arch-diagram" id="arch-diagram" role="region" aria-label="System Architecture Flow Diagram">
+<!-- Stage 1 -->
+<div class="arch-node is-active" data-arch-stage="1" tabindex="0" role="button" aria-pressed="true">
+<div class="arch-node-top">
+<span class="arch-tier-pill">Stage 1</span>
+<span class="arch-status-pill teal"><i data-lucide="satellite"></i> Ingestion</span>
+</div>
+<div class="arch-node-title">Copernicus Sentinel-2 &amp; STAC Router</div>
+<p class="arch-node-desc">Exhaustive STAC pagination across AWS &amp; Planetary Computer (284 scenes). HTTP Range streaming of 20m COGs.</p>
+<div class="arch-node-tags">
+<code>B8A · B12 · SCL</code>
+<code>AWS S3 COGs</code>
+</div>
+</div>
+
+<div class="arch-connector" aria-hidden="true">
+<div class="arch-arrow"></div>
+<span class="arch-bus-label">HTTP Range</span>
+</div>
+
+<!-- Stage 2 -->
+<div class="arch-node" data-arch-stage="2" tabindex="0" role="button" aria-pressed="false">
+<div class="arch-node-top">
+<span class="arch-tier-pill">Stage 2</span>
+<span class="arch-status-pill claret"><i data-lucide="cpu"></i> Raster Core</span>
+</div>
+<div class="arch-node-title">Deterministic dNBR &amp; Calibration</div>
+<p class="arch-node-desc">Applies ESA Baseline 05.xx offset (BOA = −1000). Publishes full 6-tier USGS sensitivity curve.</p>
+<div class="arch-node-tags">
+<code>BOA = −1000</code>
+<code>6 USGS Tiers</code>
+</div>
+</div>
+
+<div class="arch-connector" aria-hidden="true">
+<div class="arch-arrow"></div>
+<span class="arch-bus-label">Raster Metrics</span>
+</div>
+
+<!-- Stage 3 -->
+<div class="arch-node" data-arch-stage="3" tabindex="0" role="button" aria-pressed="false">
+<div class="arch-node-top">
+<span class="arch-tier-pill">Stage 3</span>
+<span class="arch-status-pill amber"><i data-lucide="shield-check"></i> WebCrypto</span>
+</div>
+<div class="arch-node-title">RFC 8785 &amp; Merkle DAG Engine</div>
+<p class="arch-node-desc">Pure client-side canonicalization (JCS) and RFC 6962 binary Merkle tree with Python byte parity.</p>
+<div class="arch-node-tags">
+<code>RFC 8785 JCS</code>
+<code>RFC 6962 Tree</code>
+</div>
+</div>
+
+<div class="arch-connector" aria-hidden="true">
+<div class="arch-arrow"></div>
+<span class="arch-bus-label">Canonical Pkg</span>
+</div>
+
+<!-- Stage 4 -->
+<div class="arch-node" data-arch-stage="4" tabindex="0" role="button" aria-pressed="false">
+<div class="arch-node-top">
+<span class="arch-tier-pill">Stage 4</span>
+<span class="arch-status-pill teal"><i data-lucide="git-fork"></i> Gatekeeper</span>
+</div>
+<div class="arch-node-title">Deterministic Quality Gatekeeper</div>
+<p class="arch-node-desc">Runs 5 automated gates in browser: Merkle integrity, bounding, STAC census timing, sensitivity, recovery scope.</p>
+<div class="arch-node-tags">
+<code>5 Quality Gates</code>
+<code>Zero Backend</code>
+</div>
+</div>
+
+<div class="arch-connector" aria-hidden="true">
+<div class="arch-arrow"></div>
+<span class="arch-bus-label">Audit Report</span>
+</div>
+
+<!-- Stage 5 -->
+<div class="arch-node" data-arch-stage="5" tabindex="0" role="button" aria-pressed="false">
+<div class="arch-node-top">
+<span class="arch-tier-pill">Stage 5</span>
+<span class="arch-status-pill oxford"><i data-lucide="blocks"></i> Settlement</span>
+</div>
+<div class="arch-node-title">Ethereum Sepolia Ledger</div>
+<p class="arch-node-desc">Anchors submission, watchdog disputes, adjudications (NEEDS_EVIDENCE), and immutable supersession DAG.</p>
+<div class="arch-node-tags">
+<code>0xb1ce…210f</code>
+<code>POST_HOC Timing</code>
+</div>
+</div>
+</div>
+
+<!-- Architecture Dynamic Inspector Panel -->
+<div class="arch-inspector" id="arch-inspector">
+<div class="arch-inspector-head">
+<div class="arch-inspector-title-wrap">
+<span class="kicker" id="arch-inspector-kicker">Stage 1 // Earth Observation &amp; Telemetry Stream</span>
+<h4 class="arch-inspector-title" id="arch-inspector-title">Copernicus Sentinel-2 L2A &amp; Multi-Catalog STAC Router</h4>
+</div>
+<div class="arch-inspector-badge" id="arch-inspector-badge">
+<span class="story-badge teal">Zero-Trust Telemetry</span>
+</div>
+</div>
+
+<div class="arch-inspector-grid">
+<div class="arch-insp-col">
+<span class="arch-insp-label">Architecture Role &amp; Data Routing</span>
+<p id="arch-insp-role" class="arch-insp-text">Queries AWS Earth Search and Microsoft Planetary Computer STAC APIs with paginated exhaustion across the monitoring window. Streams only the required bounding-box pixel blocks of 20m Cloud-Optimized GeoTIFFs (B8A, B12, SCL, TCI) via HTTP Range requests without downloading gigabytes of unneeded spectral bands.</p>
+<div class="arch-insp-metric">
+<strong>Telemetry Scope:</strong>
+<span id="arch-insp-scope">284 scenes reconciled across 2 independent STAC catalogs · 0 catalog discrepancies</span>
+</div>
+</div>
+
+<div class="arch-insp-col">
+<span class="arch-insp-label">Cryptographic Invariant &amp; Enforcement</span>
+<div class="arch-insp-spec-box">
+<div class="arch-insp-row">
+<span>Standard:</span>
+<strong id="arch-insp-standard">OGC STAC 1.0.0 + HTTP/1.1 Range RFC 9110</strong>
+</div>
+<div class="arch-insp-row">
+<span>Invariant:</span>
+<strong id="arch-insp-invariant">Census Completeness: Cannot omit clearer or later overpasses to hide fire spread</strong>
+</div>
+<div class="arch-insp-row">
+<span>Live Reference:</span>
+<code class="ft-mono" id="arch-insp-hash">MGRS Tile 35SMC · S2B_35SMC_20250705_0_L2A</code>
+</div>
+</div>
+<p class="arch-insp-caveat" id="arch-insp-caveat">Why it matters: Eliminates selective scene omission (cherry-picking dates with heavy smoke or before the full perimeter was contained).</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- ═══════════ VIEW: CASES ═══════════ -->
+<div data-view="cases" hidden>
+<section class="story-card reveal in">
+<div class="story-header"><div><span class="kicker">Registry</span><h2 class="story-title">Case registry</h2></div><div style="display:flex;gap:8px;align-items:center;"><button class="btn btn-ghost btn-sm" id="btn-clear-drafts" type="button" title="Remove unanchored browser drafts">Clear local drafts</button><a class="btn btn-claret btn-sm" href="#/submit">+ New submission</a></div></div>
+<p class="section-intro">Every anchored package on Ethereum Sepolia and every local browser draft. Submitting a package on-chain records <code>SUBMITTED (Pending Review)</code> or <code>NEEDS_EVIDENCE</code> — never automatic approval. A case becomes <code>APPROVED</code> only after empirical satellite COG processing passes all 5 quality gates and an auditor signs an on-chain <code>review()</code> transaction.</p>
+<div class="toolbar">
+<input type="search" id="case-search" placeholder="Search cases, tiles, scene IDs…" aria-label="Search cases" />
+<select id="case-filter" aria-label="Filter by status"><option value="all">All statuses</option><option value="APPROVED">Approved (On-Chain Reviewed)</option><option value="SUBMITTED">Submitted (Pending Review)</option><option value="NEEDS_EVIDENCE">Needs Evidence / Unsupported</option><option value="LOCAL_DRAFT">Local Draft (Not On-Chain)</option></select>
+<select id="case-sort" aria-label="Sort cases"><option value="recent">Most recent</option><option value="area">Largest burn area</option><option value="title">Title A–Z</option></select>
+</div>
+<div id="cases-grid" class="cases-grid"></div>
+<p class="fig-note" id="cases-empty" hidden>No cases match. Clear the search or <a class="ft-link" href="#/submit">submit a claim for a new MGRS tile</a>.</p>
+</section>
+</div>
+<!-- ═══════════ VIEW: CASE WORKSPACE ═══════════ -->
+<div data-view="case" hidden>
+<div class="case-subnav"><a href="#/cases">← Registry</a><span id="case-subnav-title">Case · TURKIYE-IZMIR-ORHANLI-2025 · Tile 35SMC</span><a href="#step-1">1 Submit</a><a href="#step-2">2 Gates</a><a href="#step-3">3 Evidence</a><a href="#step-4">4 Ledger</a></div>
+<!-- ═══ STEP 1 ═══ -->
+<section class="story-card step reveal" id="step-1" data-step-anchor>
+<div class="story-header"><div><span class="kicker">Step 1 // Claim &amp; Evidence Package Submission</span><h2 class="story-title" id="step-1-title">Select a claim package for review</h2></div><span class="story-badge oxford" id="step-1-badge">Prototype · Wildfire module</span></div>
+<p class="section-intro" id="step-1-intro">The submitter packages boundary commitments, satellite scene IDs and radiometric metrics into a canonical envelope. Pick a package — the gatekeeper in Step 2 re-evaluates instantly.</p>
+<div class="pkg-grid" id="izmir-pkg-grid">
+<button class="pkg-card" data-pkg="v1" type="button"><span class="pkg-top"><span class="pkg-ver">Package v1</span><span class="story-badge claret">Rationale requested</span></span><strong>Provisional 30 June snapshot</strong><span class="pkg-desc">Single active-fire point estimate · 7,808.6 ha · no sensitivity curve</span><span class="pkg-foot">S2C_35SMC_20250630_0_L2A only</span></button>
+<button class="pkg-card is-active" data-pkg="v2" type="button"><span class="pkg-top"><span class="pkg-ver">Package v2</span><span class="story-badge teal">Approved</span></span><strong>Reproducible multi-date package</strong><span class="pkg-desc">30 June + 5 July contained + sensitivity curve + June 2026 follow-up</span><span class="pkg-foot">Supersedes v1 · DAG lineage on-chain</span></button>
+</div>
+<div class="submit-panel">
+<div class="submit-row">
+<div class="submit-field" id="izmir-pkg-select-row">
+<label for="select-package">Active evidence package under review</label>
+<select id="select-package">
+<option value="v1">Package v1 — Provisional 30 June single-point claim (7,808 ha · Rationale Requested)</option>
+<option value="v2" selected>Package v2 — Reproducible multi-date package (APPROVED)</option>
+</select>
+</div>
+<div class="submit-field" id="custom-pkg-summary-row" hidden>
+<label>Active custom submission under review</label>
+<div id="custom-pkg-summary-box" style="font-size:13px;color:var(--ft-ink);padding:8px 10px;background:var(--ft-paper);border:1px solid var(--ft-rule);border-radius:4px;"></div>
+</div>
+<div class="hash-box">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+<span>Package hash <code class="ft-mono" id="package-hash-display">0x…</code></span>
+<button class="btn-copy-icon" id="btn-copy-pkg" title="Copy package hash" type="button" aria-label="Copy package hash"><i data-lucide="copy"></i></button>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+<span>Report / Merkle <code class="ft-mono" id="report-hash-display">0x…</code></span>
+<button class="btn-copy-icon" id="btn-copy-rep" title="Copy report hash" type="button" aria-label="Copy report hash"><i data-lucide="copy"></i></button>
+</div>
+</div>
+</div>
+<div class="claim-box">
+<div><strong>Declared claim</strong><span id="claim-text-display">Evaluating claim…</span></div>
+<div class="claim-meta"><span><strong>Study area</strong> <code class="ft-mono" id="claim-study-area-code">35SMC [26.78°E–27.08°E, 38.03°N–38.23°N] · 58,325.1 ha</code></span><span><strong>Method</strong> <code class="ft-mono" id="claim-method-code">Sentinel-2 L2A dNBR (B8A, B12, SCL)</code></span></div>
+</div>
+</div>
+<p class="boundary-note" id="step-1-boundary-note"><strong>Verification boundary:</strong> Every wildfire submission must be backed by actual Copernicus Sentinel-2 L2A STAC scenes and 20m Cloud-Optimized GeoTIFF (B8A, B12, SCL) processing for its declared MGRS tile and bounding box. Unprocessed or unsupported claims are flagged <code>UNSUPPORTED / NEEDS_EVIDENCE</code>.</p>
+</section>
+
+<!-- ═══ STEP 2 ═══ -->
+<section class="story-card step reveal" id="step-2">
+<div class="story-header"><div><span class="kicker">Step 2 // Automated Quality Gatekeeper</span><h2 class="story-title">What was checked — and what needs evidence</h2></div><span class="story-badge" id="eval-status-badge">Evaluating…</span></div>
+<p class="section-intro">Five independent gates run against the public Sentinel-2 archive, reproducible query logs and the submitted method. Hover any card — every verdict traces to a number in Step 3.</p>
+<div class="gate-legend"><span class="story-badge teal">Pass</span><span class="story-badge amber">Rationale requested</span><span class="story-badge claret">Needs evidence</span><span class="legend-note">Non-accusatory by design: missing evidence triggers a rationale request, not a fraud claim.</span></div>
+
+<div class="gate-gauge-box" id="gate-gauge-box">
+  <svg class="gauge-svg" viewBox="0 0 40 40" aria-hidden="true">
+    <circle class="gauge-bg" cx="20" cy="20" r="16" />
+    <circle class="gauge-fill teal" id="gauge-fill-circle" cx="20" cy="20" r="16" stroke-dasharray="100.5" stroke-dashoffset="0" transform="rotate(-90 20 20)" />
+    <text class="gauge-text" id="gauge-score-text" x="20" y="20">5/5</text>
+  </svg>
+  <div>
+    <strong id="gauge-headline">All 5 Quality Gates Passed (100% Reproducible)</strong>
+    <p id="gauge-sub" style="font-size: 12px; color: var(--ft-ink-light); margin-top: 2px;">Multi-date census, single-tile bounding, calibration offset, and recovery boundaries verified.</p>
+  </div>
+</div>
+
+<ol id="checks-container" aria-label="Automated quality gate checks"></ol>
+<div class="rationale-box" id="rationale-container">
+<div class="rationale-head"><strong id="rationale-title">Evaluating evidence package…</strong><span class="story-badge" id="decision-badge">Evaluating…</span></div>
+<p id="rationale-text">Checking observation timing, active smoke coverage and threshold sensitivity disclosure…</p>
+</div>
+</section>
+
+<!-- ═══ STEP 3 ═══ -->
+<section class="story-card step reveal" id="step-3">
+<div class="story-header"><div><span class="kicker" id="step-3-kicker">Step 3 // Detailed Evidence Inspection</span><h2 class="story-title" id="step-3-title">June 2025 İzmir / Orhanlı wildfires — the evidence</h2></div><span class="story-badge oxford" id="step-3-badge">Open example investigation</span></div>
+<p class="section-intro" id="step-3-intro"><em>How much land appears burned, how sensitive is that estimate to imagery and method, and can another reviewer reproduce it?</em> — NERO Research Brief (Coskuner &amp; Papavasileiou, 1 July 2025) vs. reproducible CCEL dNBR.</p>
+
+<div id="step-3-unsupported-box" hidden style="padding: 20px; border: 1.5px solid var(--ft-claret); border-radius: 6px; background: rgba(153, 15, 61, 0.05); margin-bottom: 16px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;">
+    <strong style="font-size:15px;color:var(--ft-claret);" id="step-3-unsupported-title">Unsupported / Unverified Claim — No Satellite Raster Evidence Computed</strong>
+    <span class="story-badge claret">UNSUPPORTED / NEEDS EVIDENCE</span>
+  </div>
+  <p id="step-3-unsupported-desc" style="font-size:13px;color:var(--ft-ink);line-height:1.55;margin-bottom:12px;">
+    This submission does not have verified Sentinel-2 L2A Cloud-Optimized GeoTIFF (B8A, B12, SCL) output for its declared MGRS tile and bounding box. CCEL never substitutes another location's satellite curves or images for a custom case.
+  </p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+    <button class="btn btn-claret btn-sm" id="btn-step3-run-satellite" type="button">Run Live Satellite COG Processor (AWS S3) ↗</button>
+    <a class="btn btn-ghost btn-sm" href="#/submit">Edit Scenes / BBox in Submit Wizard →</a>
+  </div>
+</div>
+
+<div id="step-3-evidence-body">
+<div class="stats-strip" aria-label="Key burn-area statistics">
+<div class="stat-card"><div class="stat-label" id="stat-card-1-label">NERO brief reference (30 June)</div><div class="stat-num oxford" id="stat-nero-ref">7,819.6 ha</div><div class="stat-desc" id="stat-card-1-desc">4,277.7 ha (Fire A) + 3,541.9 ha (Fire B) while fires spread. Threshold unspecified.</div></div>
+<div class="stat-card"><div class="stat-label" id="stat-card-2-label">Provisional 30 June · dNBR ≥ 0.20</div><div class="stat-num claret" id="stat-june30-ha">7,808.6 ha</div><div class="stat-desc" id="stat-june30-desc">Fire A 4,144.0 · Fire B 3,664.6 ha. Brackets NERO within 0.14%.</div></div>
+<div class="stat-card"><div class="stat-label" id="stat-card-3-label">Contained 5 July · dNBR ≥ 0.20</div><div class="stat-num teal" id="stat-july05-ha">9,726.2 ha</div><div class="stat-desc" id="stat-july05-desc">Fire A 4,620.6 · Fire B 5,105.6 ha. <strong>+1,917.6 ha (+24.6%)</strong> after 30 June.</div></div>
+<div class="stat-card"><div class="stat-label" id="stat-card-4-label">Calibration offset sensitivity</div><div class="stat-num amber-num" id="stat-offset-bias">−1,703.6 ha</div><div class="stat-desc" id="stat-card-4-desc">Omitting ESA PB 05.xx <code>BOA_ADD_OFFSET = −1000</code> underestimates dNBR ≥ 0.44 by 23.6%.</div></div>
+</div>
+
+<div class="fig-block">
+<div class="fig-head">
+<div><h3 id="fig1-title">Figure 1 — Threshold &amp; method sensitivity</h3><p id="fig1-sub">Why a single number is not reproducible without its threshold and calibration offset.</p></div>
+<div class="thresh-controls">
+<label for="threshold-range">dNBR threshold <output id="threshold-output">≥ 0.20</output></label>
+<input type="range" id="threshold-range" min="0" max="5" step="1" value="2" aria-label="dNBR threshold" />
+<label class="sr-only" for="select-threshold">Highlight dNBR threshold</label>
+<select id="select-threshold">
+<option value="0.10">dNBR ≥ 0.10 · USGS Low boundary</option>
+<option value="0.15">dNBR ≥ 0.15 · Low severity</option>
+<option value="0.20" selected>dNBR ≥ 0.20 · Low–moderate</option>
+<option value="0.27">dNBR ≥ 0.27 · Moderate-low</option>
+<option value="0.44">dNBR ≥ 0.44 · Moderate-high</option>
+<option value="0.66">dNBR ≥ 0.66 · High severity</option>
+</select>
+</div>
+</div>
+<div class="chart-legend" id="fig1-legend"><span class="legend-item"><span class="legend-dot teal"></span> 5 July 2025 contained (calibrated)</span><span class="legend-item"><span class="legend-dot claret"></span> 30 June 2025 provisional (calibrated)</span><span class="legend-item"><span class="legend-dot gray"></span> 30 June uncalibrated raw DN</span></div>
+<div class="chart-container" id="census-chart-box"><svg id="census-svg" viewBox="0 0 1000 360" role="img" aria-label="dNBR threshold sensitivity chart"></svg></div>
+<div id="chart-tooltip" class="chart-tooltip"></div>
+<div class="table-wrap"><table class="audit-table" aria-label="dNBR threshold sensitivity table"><thead id="sensitivity-thead"><tr><th>dNBR threshold</th><th>30 June total</th><th>30 June A / B</th><th>5 July total</th><th>5 July A / B</th><th>Expansion</th><th>30 June raw DN</th></tr></thead><tbody id="sensitivity-tbody"></tbody></table></div>
+<p class="fig-note" id="fig1-note">Across dNBR 0.15–0.44 the 30 June estimate spans 7,963.1 → 7,227.7 ha (735.4 ha). Publishing the curve — not a point — is the reproducibility requirement.</p>
+</div>
+
+<div class="fig-block">
+<h3 id="fig2-title">Figure 2 — Four dates, one scar</h3>
+<p class="fig-sub" id="fig2-sub">Pre-fire baseline → active-fire smoke → contained perimeter → exact 1-year anniversary. Spectral rebound is shrub resprouting — <strong>not</strong> proof of replanting or carbon recovery.</p>
+<div class="nbr-strip" id="fig2-nbr-strip">
+<div><span>Pre-fire (25 Jun 2025)</span><strong>+0.6386</strong></div><div class="nbr-arrow">→</div>
+<div><span>Post-fire (5 Jul 2025)</span><strong class="claret">−0.6205</strong></div><div class="nbr-arrow">→</div>
+<div><span>1-Yr follow-up (25 Jun 2026)</span><strong class="teal">+0.1619</strong></div>
+<div class="nbr-note"><span>Mean NBR over burned pixels (dNBR ≥ 0.20)</span> · <span id="followup-scar-ha">6,842.4 ha persistent scar</span> · 2,883.8 ha partial rebound</div>
+</div>
+
+<div class="split-slider-box">
+  <div class="split-slider-head">
+    <span class="split-slider-title"><i data-lucide="layers"></i> Interactive Before/After Satellite Wipe</span>
+    <span class="fig-note" id="split-slider-note">Drag slider or move pointer across to wipe between 25 June Pre-Fire baseline and 5 July Contained Scar (9,726.2 ha)</span>
+  </div>
+  <div class="split-slider-container" id="split-slider" data-split-slider tabindex="0" role="region" aria-label="Satellite Before and After wipe comparison">
+    <div class="split-layer split-before">
+      <img id="split-before-img" src="/fixtures/izmir_orhanli_2025/tci_20250625.png" alt="Pre-Fire True Color" />
+      <span class="split-pill split-pill-left" id="split-before-pill"><i data-lucide="leaf"></i> Pre-Fire · 25 June 2025</span>
+    </div>
+    <div class="split-layer split-after" id="split-after-layer">
+      <img id="split-after-img" src="/fixtures/izmir_orhanli_2025/composite_20250705.png" alt="Contained Burn Scar" />
+      <span class="split-pill split-pill-right" id="split-after-pill"><i data-lucide="flame"></i> Contained · 5 July 2025 (9,726.2 ha)</span>
+    </div>
+    <div class="split-handle" id="split-handle">
+      <div class="split-handle-btn"><i data-lucide="move-horizontal"></i></div>
+    </div>
+  </div>
+</div>
+
+<div class="multiples-grid" id="step-3-multiples-grid">
+<div class="multiple-panel" id="panel-prefire"><div class="multiple-title" id="panel-prefire-title">1 · Pre-fire — 25 June 2025</div><div class="multiple-meta" id="panel-prefire-meta"><code>S2B_35SMC_20250625_1_L2A</code> · 0.02% cloud</div><img id="prefire-quicklook-img" class="multiple-img" src="/fixtures/izmir_orhanli_2025/tci_20250625.png" alt="Pre-fire true colour" loading="lazy" /><p id="panel-prefire-desc">Intact pine forest and maquis, four days before the 29 June 09:57 UTC ignition.</p></div>
+<div class="multiple-panel selected-failure" id="panel-submitted"><div class="multiple-title" id="panel-submitted-title">2 · Active fire — 30 June 2025</div><div class="multiple-meta" id="panel-submitted-meta"><code>S2C_35SMC_20250630_0_L2A</code> · NERO overpass</div><img id="submitted-quicklook-img" class="multiple-img" src="/fixtures/izmir_orhanli_2025/tci_20250630.png" alt="Active fire true colour" loading="lazy" /><p id="panel-submitted-desc">1,957.5 ha under active smoke / dark char (SCL 2 &amp; 7). Fire B still spreading.</p></div>
+<div class="multiple-panel selected-success" id="panel-alternative"><div class="multiple-title" id="panel-alternative-title">3 · Contained — 5 July 2025</div><div class="multiple-meta" id="panel-alternative-meta"><code>S2B_35SMC_20250705_0_L2A</code> · smoke-free</div><img id="alt-quicklook-img" class="multiple-img" src="/fixtures/izmir_orhanli_2025/composite_20250705.png" alt="Contained dNBR burn map" loading="lazy" /><p id="panel-alternative-desc">Smoke-free perimeter. +1,917.6 ha (+24.6%) of post–30 June expansion revealed.</p></div>
+<div class="multiple-panel" id="panel-followup"><div class="multiple-title" id="panel-followup-title">4 · Anniversary — 25 June 2026</div><div class="multiple-meta" id="panel-followup-meta"><code>S2C_35SMC_20260625_0_L2A</code> · 0.015% cloud</div><img id="followup-quicklook-img" class="multiple-img" src="/fixtures/izmir_orhanli_2025/composite_20260625.png" alt="One-year follow-up composite" loading="lazy" /><p id="followup-panel-desc">Exact calendar-day match. Persistent scar vs. herbaceous resprouting — not replanting proof.</p></div>
+</div>
+<div class="map-block">
+<div class="map-head"><strong id="map-head-title">Study-area map — Seferihisar (West · Fire B) &amp; Orhanlı–Menderes (East · Fire A) · 58,325.1 ha · split 26.9168°E</strong>
+<div class="map-controls" id="izmir-map-controls"><label for="select-map-date">Burn overlay</label><select id="select-map-date"><option value="20250630">30 June 2025 · Active fire</option><option value="20250705" selected>5 July 2025 · Contained</option><option value="20260625">25 June 2026 · Anniversary</option></select></div></div>
+<div id="map"></div>
+<div class="map-legend" id="map-legend-bar"><span><i class="sw oxford"></i> Fire B · Seferihisar</span><span><i class="sw claret"></i> Fire A · Orhanlı</span><span><i class="dot"></i> Ignition 38.1915°N, 26.9906°E</span><span class="map-hint">Toggle Light / Satellite in the map corner · click a sector for sector hectares</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ═══ STEP 4 ═══ -->
+<section class="story-card step reveal" id="step-4">
+<div class="story-header"><div><span class="kicker">Step 4 // On-Chain Review, Challenge &amp; Supersession</span><h2 class="story-title" id="step-4-title">A ledger that cannot erase its corrections</h2></div><span class="story-badge oxford" id="lineage-count-badge">Live RPC</span></div>
+<p class="section-intro" id="step-4-intro">PDF reports erase failed audits. Here, submission, watchdog challenge, adjudication (<code>NEEDS_EVIDENCE</code>), supersession and approval stay permanently on Ethereum Sepolia — including the honest <code>POST_HOC</code> timing flag.</p>
+<p style="font-size: 11px; color: var(--ft-ink-muted); margin: -4px 0 12px; font-style: italic;">Demonstration Disclosure: The Submitter, Independent Wildfire Auditor, and Lead Verification Reviewer roles are demonstration wallets controlled by the team for this testnet deployment.</p>
+<div class="ledger-visual" id="izmir-ledger-visual" aria-hidden="true">
+<div class="ledger-node"><span>Tx 0</span><strong>Rule</strong><em>POST_HOC</em></div><div class="ledger-line"></div>
+<div class="ledger-node"><span>Tx 1</span><strong>v1 Submitted</strong><em>0x4030…</em></div><div class="ledger-line"></div>
+<div class="ledger-node warn"><span>Tx 2–3</span><strong>Challenged</strong><em>NEEDS_EVIDENCE</em></div><div class="ledger-line"></div>
+<div class="ledger-node"><span>Tx 4</span><strong>Superseded → v2</strong><em>0xc19f…</em></div><div class="ledger-line"></div>
+<div class="ledger-node ok"><span>Tx 5</span><strong>Approved</strong><em>✓ verified</em></div>
+</div>
+<div id="custom-ledger-panel" hidden style="margin-bottom: 16px;"></div>
+<div class="table-wrap"><table class="audit-table" aria-label="On-chain audit event log"><thead><tr><th>Event / Transaction</th><th>Actor</th><th>Status</th><th>Cryptographic link</th></tr></thead><tbody id="timeline-tbody"><tr><td colspan="4" class="muted">Loading on-chain events from Sepolia…</td></tr></tbody></table></div>
+</section>
+
+<!-- ═══ METHOD / DRAWER ═══ -->
+<section class="method reveal" id="method">
+<div class="method-head"><span class="kicker">Method &amp; Reproducibility</span><h2>Recompute it yourself.</h2><p>Single tile 35SMC (EPSG:32635) · rows [3434:4542] × cols [4036:5352] · 1,108 × 1,316 px at 20 m · 16 COGs range-fetched with SHA-256 provenance.</p></div>
+<div class="bento">
+<div class="bento-card span2"><span class="bento-tag">Cryptography</span><h3>RFC 8785 + RFC 6962</h3><p>Canonical JSON (JCS) and domain-separated Merkle trees with byte-for-byte Python ↔ TypeScript parity. One flipped byte breaks the Sepolia commitment.</p><code class="ft-mono">canonicalize → SHA-256 → Merkle root → on-chain</code></div>
+<div class="bento-card"><span class="bento-tag">Radiometry</span><h3>BOA_ADD_OFFSET = −1000</h3><p>ESA PB 05.xx calibration applied. Skipping it costs −1,703.6 ha at dNBR ≥ 0.44.</p></div>
+<div class="bento-card"><span class="bento-tag">Census</span><h3>0 discrepancies</h3><p>Paginated STAC to exhaustion — AWS Earth Search × Planetary Computer, hash-logged.</p></div>
+<div class="bento-card span2"><span class="bento-tag">Run it</span><h3>CLI reproduction</h3><pre class="code-block">PYTHONPATH=packages/cli ./.venv/bin/python \
+  packages/cli/ccel_cli/izmir_dnbr.py
+bash scripts/verify_all.sh   # 6 stages</pre></div>
+<div class="bento-card"><span class="bento-tag">Timing honesty</span><h3>POST_HOC ≠ PRE_REGISTERED</h3><p>A rule committed today cannot prove it predates historical imagery. The chain says so.</p></div>
+</div>
+<details class="technical-drawer">
+<summary>Technical drawer — tamper simulator &amp; embeddable badge</summary>
+<div class="drawer-grid">
+<div>
+<h3>1-byte tamper simulator (WebCrypto)</h3>
+<p>Corrupt one byte of the reported hectares and watch RFC 8785 hashing diverge — Check 1 in Step 2 flips to <code>TAMPER DETECTED</code>.</p>
+<div class="btn-row"><button id="btn-tamper-byte" class="btn btn-claret" type="button"><i data-lucide="bug"></i> Simulate 1-byte tamper</button><button id="btn-restore-byte" class="btn btn-ghost" type="button"><i data-lucide="refresh-cw"></i> Restore authentic commitment</button></div>
+<div id="tamper-status"></div>
+</div>
+<div>
+<h3>Embeddable verification badge</h3>
+<p>Registries embed <code>&lt;climatechain-badge&gt;</code> to hydrate status live from Sepolia RPC.</p>
+<div id="badge-preview-container"></div>
+<textarea id="badge-code-textarea" readonly rows="3" aria-label="Badge embed code"></textarea>
+</div>
+</div>
+</details>
+</section>
+
+
+</div>
+
+<!-- ═══════════ VIEW: SUBMIT ═══════════ -->
+<div data-view="submit" hidden>
+<section class="story-card reveal in">
+<div class="story-header"><div><span class="kicker">Submit · Wildfire module · Live STAC + 20m COG Processor</span><h2 class="story-title">Submit an environmental claim for review</h2></div><span class="story-badge oxford" id="wizard-step-badge">Step 1 of 4 · Claim</span></div>
+<p class="section-intro">Every new location is verified against live Copernicus Sentinel-2 L2A STAC catalogs and 20m Cloud-Optimized GeoTIFFs on AWS S3. Unprocessed or unsupported claims receive <code>UNSUPPORTED / NEEDS_EVIDENCE</code> — never a fake pass. Anchoring on Sepolia records <code>SUBMITTED (Pending Review)</code> until an auditor signs an on-chain <code>review()</code> transaction.</p>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 12px;background:var(--ft-paper);border:1px solid var(--ft-rule);border-radius:4px;margin-bottom:16px;">
+  <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ft-ink-light);">Quick Test Presets:</span>
+  <button type="button" class="btn btn-ghost btn-sm" id="wz-preset-athens">1. New Real Location · Aug 2024 Athens / Attica Wildfire, Greece (Tile 34SGH · 10,489.0 ha)</button>
+  <button type="button" class="btn btn-ghost btn-sm" id="wz-preset-mismatch">2. Inflated Area Claim · Athens 34SGH (Claiming 18,500 ha vs 10,489 ha Raster)</button>
+  <button type="button" class="btn btn-ghost btn-sm" id="wz-preset-unsupported">3. Unsupported / Fake Scene · Tile 99ZZZ (Triggers UNSUPPORTED / NEEDS EVIDENCE)</button>
+</div>
+
+<div class="wizard-progress"><button type="button" class="wz-dot is-on" data-wz-dot="1">1 Claim</button><button type="button" class="wz-dot" data-wz-dot="2">2 Scenes &amp; method</button><button type="button" class="wz-dot" data-wz-dot="3">3 Live Satellite &amp; Gates</button><button type="button" class="wz-dot" data-wz-dot="4">4 Hash &amp; anchor</button></div>
+
+<form id="wizard-form" novalidate>
+<fieldset class="wz-panel" data-wz-panel="1">
+<legend>1 · The claim (New Location)</legend>
+<label class="fld"><span>Claim title *</span><input id="wz-title" required value="August 2024 Northeast Attica / Varnavas–Penteli Wildfire (Athens, Greece)" placeholder="e.g. August 2024 Northeast Attica Wildfire (Tile 34SGH)" /></label>
+<div class="fld-row">
+<label class="fld"><span>MGRS tile * (e.g. 34SGH)</span><input id="wz-tile" required pattern="[0-9]{1,2}[A-Z][A-Z]{2}" value="34SGH" placeholder="34SGH" style="text-transform:uppercase" /></label>
+<label class="fld"><span>Claimed burned area (ha) *</span><input id="wz-area" required type="number" min="0" step="0.1" value="10489.0" placeholder="10489.0" /></label>
+</div>
+<div class="fld-row">
+<label class="fld"><span>Study bbox W (lon) *</span><input id="wz-w" required type="number" step="0.0001" value="23.78" /></label>
+<label class="fld"><span>S (lat) *</span><input id="wz-s" required type="number" step="0.0001" value="38.04" /></label>
+<label class="fld"><span>E (lon) *</span><input id="wz-e" required type="number" step="0.0001" value="24.01" /></label>
+<label class="fld"><span>N (lat) *</span><input id="wz-n" required type="number" step="0.0001" value="38.27" /></label>
+</div>
+<p class="fld-err" id="wz-err-1" role="alert"></p>
+</fieldset>
+
+<fieldset class="wz-panel" data-wz-panel="2" hidden>
+<legend>2 · Scenes &amp; method</legend>
+<div class="fld-row">
+<label class="fld"><span>Pre-fire scene ID *</span><input id="wz-pre" required value="S2A_34SGH_20240807_0_L2A" /></label>
+<label class="fld"><span>Post-fire scene ID *</span><input id="wz-post" required value="S2A_34SGH_20240817_0_L2A" /></label>
+</div>
+<div class="fld-row">
+<label class="fld"><span>dNBR threshold *</span><select id="wz-threshold"><option value="0.10">≥ 0.10</option><option value="0.15">≥ 0.15</option><option value="0.20" selected>≥ 0.20</option><option value="0.27">≥ 0.27</option><option value="0.44">≥ 0.44</option><option value="0.66">≥ 0.66</option></select></label>
+<label class="fld"><span>Band pair</span><select id="wz-bands"><option>B8A + B12 (20 m, recommended)</option><option>B08 + B12 (10/20 m resampled)</option></select></label>
+</div>
+<label class="check-fld"><input type="checkbox" id="wz-offset" checked /> Apply ESA PB 05.xx <code>BOA_ADD_OFFSET = −1000</code> (required for calibrated dNBR)</label>
+<label class="check-fld"><input type="checkbox" id="wz-contained" checked /> Include a later smoke-free post-containment scene (not only an active-fire pass)</label>
+<label class="check-fld"><input type="checkbox" id="wz-curve" checked /> Publish the full threshold sensitivity curve (0.10–0.66), not a single point</label>
+<label class="check-fld"><input type="checkbox" id="wz-followup" /> Include a 1-year anniversary follow-up scene</label>
+<label class="fld"><span>Selection rationale (why these scenes?)</span><textarea id="wz-rationale" rows="3" placeholder="e.g. Cloud-free pre-fire baseline (07 Aug 2024) vs post-containment overpass (17 Aug 2024) on MGRS tile 34SGH.">Cloud-free pre-fire baseline (07 Aug 2024, S2A_34SGH_20240807_0_L2A) vs smoke-free post-containment overpass (17 Aug 2024, S2A_34SGH_20240817_0_L2A) covering the Northeast Attica Varnavas–Penteli burn scar.</textarea></label>
+<p class="fld-err" id="wz-err-2" role="alert"></p>
+</fieldset>
+
+<div class="wz-panel" data-wz-panel="3" hidden>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+  <h3 class="wz-h" style="margin:0;">3 · Live Satellite COG Processing &amp; Gate Verification</h3>
+  <button class="btn btn-claret btn-sm" id="wz-run-satellite" type="button">Re-Run Live Satellite COG Processor (AWS S3)</button>
+</div>
+<p class="section-intro">Streams 20m Sentinel-2 L2A Cloud-Optimized GeoTIFFs (<code>B8A.tif</code>, <code>B12.tif</code>, <code>SCL.tif</code>, <code>TCI.tif</code>) from AWS Open Data for your bounding box and evaluates all 5 quality gates against the computed raster.</p>
+<div id="wz-satellite-status" style="margin-bottom:14px;"></div>
+<div id="wizard-gates"></div>
+</div>
+
+<div class="wz-panel" data-wz-panel="4" hidden>
+<h3 class="wz-h">4 · Canonical hash &amp; on-chain submission</h3>
+<div class="hash-result">
+<div><span>Package hash (RFC 8785 → SHA-256)</span><code class="ft-mono" id="wz-hash">— run “Compute hash” —</code></div>
+<div><span>Lifecycle status</span><strong id="wz-status">LOCAL DRAFT (Not Yet On-Chain)</strong></div>
+<div><span>Reproduce rasters with the CLI</span><pre class="code-block" id="wz-cli">—</pre></div>
+</div>
+<p class="boundary-note"><strong>On-chain lifecycle rule:</strong> Saving a draft stores it only in your browser as <code>LOCAL DRAFT</code>. Clicking <strong>Submit Package On-Chain (Sepolia)</strong> executes <code>submit(packageHash, merkleRoot, manifestURI)</code> on contract <code>0xb1ce…210f</code>, recording <code>SUBMITTED (Pending Review)</code> — never automatic approval. Auditor approval requires a separate on-chain <code>review()</code> transaction in Step 4 of the Case Workspace.</p>
+</div>
+
+<div class="wz-nav">
+<button class="btn btn-ghost" id="wz-back" type="button">← Back</button>
+<button class="btn btn-ghost" id="wz-save" type="button">Save local draft</button>
+<button class="btn btn-dark" id="wz-next" type="button">Continue →</button>
+<button class="btn btn-claret" id="wz-anchor" type="button" hidden>Submit Package On-Chain (Sepolia) ↗</button>
+<button class="btn btn-ghost" id="wz-export" type="button" hidden>Export package JSON</button>
+</div>
+<p class="fld-ok" id="wz-done" role="status"></p>
+</form>
+</section>
+</div>
+
+<!-- ═══════════ VIEW: LEDGER ═══════════ -->
+<div data-view="ledger" hidden>
+<section class="story-card reveal in">
+<div class="story-header"><div><span class="kicker">Ledger · Ethereum Sepolia · chainId 11155111</span><h2 class="story-title">On-chain anchoring</h2></div><span class="story-badge oxford" id="lineage-count-badge-2">Live RPC</span></div>
+<p class="section-intro">The contract is the system of record — there is no CCEL backend database. Submissions, challenges, adjudications and approvals are wallet-signed transactions; anyone can re-read them.</p>
+<div class="ledger-cards">
+<div class="ledger-card"><span>Contract</span><code class="ft-mono">0xb1ce2e8ceb392ad3bf0e011d05689058dfa9210f</code><a class="ft-link" href="https://sepolia.etherscan.io/address/0xb1ce2e8ceb392ad3bf0e011d05689058dfa9210f" target="_blank" rel="noopener">View on Etherscan ↗</a></div>
+<div class="ledger-card"><span>Anchored lineage</span><strong>İzmir v1 → v2</strong><p>Tx 0 rule (POST_HOC) · Tx 1 submit · Tx 2 challenge · Tx 3 NEEDS_EVIDENCE · Tx 4 supersede · Tx 5 APPROVED</p><a class="ft-link" href="#/case/izmir">Full event table in workspace →</a></div>
+<div class="ledger-card"><span>Your wallet</span><strong id="ledger-wallet">Not connected</strong><p>Connect to anchor drafts, challenge packages or (as reviewer) record decisions.</p><button class="btn btn-dark btn-sm" id="btn-connect-wallet-2" type="button">Connect wallet</button></div>
+</div>
+<div class="ledger-visual" aria-hidden="true">
+<div class="ledger-node"><span>Tx 0</span><strong>Rule</strong><em>POST_HOC</em></div><div class="ledger-line"></div>
+<div class="ledger-node"><span>Tx 1</span><strong>v1 Submitted</strong><em>0x4030…</em></div><div class="ledger-line"></div>
+<div class="ledger-node warn"><span>Tx 2–3</span><strong>Challenged</strong><em>NEEDS_EVIDENCE</em></div><div class="ledger-line"></div>
+<div class="ledger-node"><span>Tx 4</span><strong>Superseded → v2</strong><em>0xc19f…</em></div><div class="ledger-line"></div>
+<div class="ledger-node ok"><span>Tx 5</span><strong>Approved</strong><em>✓ verified</em></div>
+</div>
+<p class="fig-note">Timing honesty is enforced in the contract: a selection rule registered after the monitoring window is permanently marked <code>POST_HOC</code>. Full hashes, actors and Etherscan links are in the case workspace (Step 4).</p>
+</section>
+</div>
+
+
+<!-- ═══════════ VIEW: SCENARIO LAB ═══════════ -->
+<div data-view="lab" hidden>
+<section class="story-card reveal in">
+<div class="story-header"><div><span class="kicker">Scenario lab · Adversarial claims, live verdicts</span><h2 class="story-title">Test the gates with claims designed to fail</h2></div><button class="btn btn-claret btn-sm" id="btn-run-lab" type="button"><i data-lucide="flask-conical"></i> Run all claims</button></div>
+<p class="section-intro">Nothing here is hard-coded theatre: Claim A–C verdicts are recomputed from <code>izmir_orhanli_audit.json</code> at runtime; Claim D runs the production serial-overlap detector (<code>detectSerialOverlaps</code>) — the double-counting guard for carbon retirements. A credible market needs all four behaviours.</p>
+<div id="lab-list"></div>
+<div class="verify-summary" id="lab-summary">Not run yet. Press “Run all claims” — expect 1 pass, 3 flagged. Flagged means <em>rationale requested / needs evidence</em>, never an accusation of fraud.</div>
+<div class="ops-cols">
+<div class="ops-panel"><h3>Core integrity design: a claim cannot outrun its evidence</h3>
+<ol class="flow">
+<li><div><strong>Census, not cherry-picks</strong><span>Paginated STAC to exhaustion, hash-logged. Omitted clearer/later scenes are detectable — İzmir v1 hid +1,917.6 ha that way.</span></div></li>
+<li><div><strong>Sensitivity, not single points</strong><span>735.4 ha hides inside threshold choice; −1,703.6 ha inside one forgotten offset. Curves are mandatory disclosure.</span></div></li>
+<li><div><strong>Uniqueness, not double counting</strong><span>Retirement serial blocks are interval-checked across the package; overlaps flag before credits move.</span></div></li>
+<li><div><strong>Corrections, not erasures</strong><span>Challenge → NEEDS_EVIDENCE → supersession stays on Sepolia forever, POST_HOC timing included.</span></div></li>
+</ol></div>
+<div class="ops-panel"><h3>Production path (no-backend architecture)</h3>
+<ol class="flow">
+<li><div><strong>Now</strong><span>Browser hashing/gating + wallet anchoring + CLI raster evidence. Works today, zero servers to trust.</span></div></li>
+<li><div><strong>Next</strong><span>Generalise CLI dNBR to any MGRS tile (STAC search → COG range fetch → audit JSON), IPFS pinning of envelopes, reviewer wallet allowlist UX.</span></div></li>
+<li><div><strong>Scale</strong><span>Indexer for registry discovery, RSS/webhook alerts on challenges, multi-module gates (deforestation, mangrove) behind the same envelope.</span></div></li>
+</ol></div>
+</div>
+</section>
+</div>
+
+<!-- ═══════════ VIEW: VERIFY ═══════════ -->
+<div data-view="verify" hidden>
+<section class="story-card reveal in">
+<div class="story-header"><div><span class="kicker">Verify system · End-to-end</span><h2 class="story-title">Prove the product works — live</h2></div><button class="btn btn-claret btn-sm" id="btn-run-verify" type="button"><i data-lucide="shield-check"></i> Run all checks</button></div>
+<p class="section-intro">Each row executes in your browser against the real fixtures and Sepolia RPC — the same code paths the workspace uses. Server-side suites (Python dNBR, Foundry, on-chain state) run via <code>bash scripts/verify_all.sh</code>.</p>
+<div id="verify-list"></div>
+<div class="verify-summary" id="verify-summary">Not run yet. Press “Run all checks”.</div>
+<pre class="code-block">bash scripts/verify_all.sh
+# [1] secret guard · [2] pytest (dNBR) · [3] forge test · [4] web tests + build
+# [5] CLI package + census replay · [6] Sepolia on-chain state</pre>
+</section>
+</div>
+<footer class="site-footer">
+<div class="footer-grid">
+<div><div class="brand"><span class="brand-mark">◈</span> CCEL</div><p>ClimateChain Evidence Ledger — independent cryptographic verification for environmental claims. Expose missing evidence. Request rationale. Anchor the correction.</p></div>
+<div><strong>Investigation</strong><a href="#/case/izmir">İzmir sensitivity curve</a><a href="#/case/izmir">Four-date progression</a><a href="#/case/izmir">Sepolia ledger</a></div>
+<div><strong>Sources</strong><span>Copernicus Sentinel-2 L2A · ESA / AWS Open Data</span><span>Microsoft Planetary Computer</span><span>NERO Brief · 1 July 2025</span></div>
+<div><strong>Verify</strong><code class="ft-mono">bash scripts/verify_all.sh</code><span>Contract 0xb1ce…210f · chainId 11155111</span></div>
+</div>
+<div class="footer-bar"><span>ClimateChain Evidence Ledger · Operational Multi-Source MRV</span><span>Spectral rebound ≠ replanting ≠ carbon recovery</span></div>
+</footer>
+</div>
+<div class="toast-container" id="toast-container" aria-live="polite"></div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

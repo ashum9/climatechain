@@ -1,0 +1,10 @@
+{
+  "aoiCloudCoverPct": 74.48,
+  "aoiUsablePct": 25.52,
+  "datetimeUtc": "2023-11-05T04:52:28.645000Z",
+  "meanNdvi": 0.28,
+  "ndwiTidalInundationPct": 42.1,
+  "sceneId": "S2B_45QYE_20231105_0_L2A",
+  "sclCloudGapPct": 74.48,
+  "tileCloudCoverPct": 59.97
+}

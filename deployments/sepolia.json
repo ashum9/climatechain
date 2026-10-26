@@ -1,0 +1,31 @@
+{
+  "chainId": 11155111,
+  "chainName": "Ethereum Sepolia Testnet",
+  "deployerAddress": "0xaFcB4dC65d5554473fAd2456859c45e983e396e9",
+  "contractAddress": "0xb1ce2e8ceb392ad3bf0e011d05689058dfa9210f",
+  "reviewerAddress": "0xaFcB4dC65d5554473fAd2456859c45e983e396e9",
+  "deployTxHash": "0x0d4a57ae8b2eedb6a5e102bab5d4f1594bf253f58d8d04bba77ff714075a3d04",
+  "v1PackageHash": "0x4030177336e456e398419c05a34f41d1d816246c79e186b8f11d9c130a479c44",
+  "v1MerkleRoot": "0x3cb222c9ba5d6dd99ebac7d51d1ff40ee8c5530e0a108d83a6f3e2a7f0e48ca4",
+  "v1ReportHash": "0xaf14a22a561c5461a2af23faa4de18c2a3bb1ca6be799ca0ac9c6e68b08723ec",
+  "v2PackageHash": "0xc19fd3bb3010a458dc709fc9b555d1ea23010dfa39162c7346d3e76619fe0b4f",
+  "v2MerkleRoot": "0xd7c05e6e8c8414e43d8878dd23784740b7bd652b0a03470d5b2f237a09d65f92",
+  "v2ReportHash": "0x46c84a1ef864ea59ebe021bc7016217ea0647c232437722b4b96e39f852e4d6d",
+  "tx0RegisterRule": "0xff795fd663f993e53b634d11c335b58825ac96a52de34f2b122d67b9d9ffa5a4",
+  "tx1SubmitV1": "0x6eac30f77dd46a82c66642adbe8214323b0167e573a3bf2760970742470d7b75",
+  "tx2ChallengeV1": "0x1b948e2fe6588cf0c6ffcc36b0552b3ae2decc2f77a17cb1e88e7f5f88be994e",
+  "tx3ResolveChallengeV1": "0x821a9add721055e9c921d8ee91ff73b20719cb3ca530bbd51d9bcc82634c9961",
+  "tx4SupersedeV2": "0x784121e3db0bcade22a40a8cb32e001611bf998d92c8b356edc6925415e5bdf6",
+  "tx5ReviewV2": "0xa266cd1037fe3ab2ba0f5e91ac3056ceb647eaea7aaf5e52c86e805548508f35",
+  "deploymentStatus": "LIVE_VERIFIED_ON_SEPOLIA",
+  "etherscanLinks": {
+    "contract": "https://sepolia.etherscan.io/address/0xb1ce2e8ceb392ad3bf0e011d05689058dfa9210f",
+    "deployTx": "https://sepolia.etherscan.io/tx/0x0d4a57ae8b2eedb6a5e102bab5d4f1594bf253f58d8d04bba77ff714075a3d04",
+    "tx0RegisterRule": "https://sepolia.etherscan.io/tx/0xff795fd663f993e53b634d11c335b58825ac96a52de34f2b122d67b9d9ffa5a4",
+    "tx1SubmitV1": "https://sepolia.etherscan.io/tx/0x6eac30f77dd46a82c66642adbe8214323b0167e573a3bf2760970742470d7b75",
+    "tx2ChallengeV1": "https://sepolia.etherscan.io/tx/0x1b948e2fe6588cf0c6ffcc36b0552b3ae2decc2f77a17cb1e88e7f5f88be994e",
+    "tx3ResolveChallengeV1": "https://sepolia.etherscan.io/tx/0x821a9add721055e9c921d8ee91ff73b20719cb3ca530bbd51d9bcc82634c9961",
+    "tx4SupersedeV2": "https://sepolia.etherscan.io/tx/0x784121e3db0bcade22a40a8cb32e001611bf998d92c8b356edc6925415e5bdf6",
+    "tx5ReviewV2": "https://sepolia.etherscan.io/tx/0xa266cd1037fe3ab2ba0f5e91ac3056ceb647eaea7aaf5e52c86e805548508f35"
+  }
+}

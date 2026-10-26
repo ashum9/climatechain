@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClimateChainCheckReport",
+  "type": "object",
+  "required": ["commitment", "provenance"],
+  "properties": {
+    "commitment": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "packageHash",
+        "merkleRoot",
+        "projectId",
+        "checks",
+        "overallRecommendedDecision",
+        "recommendedReasonCode"
+      ],
+      "properties": {
+        "schemaVersion": { "type": "string", "enum": ["1.0.0"] },
+        "packageHash": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" },
+        "merkleRoot": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" },
+        "projectId": { "type": "string", "enum": ["VCS-1463"] },
+        "checks": {
+          "type": "array",
+          "minItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["checkId", "name", "status", "reasonCode", "summary", "details"],
+            "properties": {
+              "checkId": {
+                "type": "string",
+                "enum": [
+                  "SOURCE_INTEGRITY",
+                  "SPATIAL_BOUNDARY",
+                  "TEMPORAL_COVERAGE",
+                  "CLOUD_AND_TIDAL_GAP",
+                  "STAC_COMPLETENESS",
+                  "SERIAL_INTEGRITY_ADVISORY",
+                  "LONGITUDINAL_ANOMALY_RADAR",
+                  "FIELD_PHOTO_GEOFENCE_PROVENANCE"
+                ]
+              },
+              "name": { "type": "string" },
+              "status": { "type": "string", "enum": ["PASS", "FAIL", "WARN"] },
+              "reasonCode": { "type": "string" },
+              "summary": { "type": "string" },
+              "details": { "type": "object" }
+            }
+          }
+        },
+        "overallRecommendedDecision": {
+          "type": "string",
+          "enum": ["APPROVED", "REJECTED", "NEEDS_EVIDENCE"]
+        },
+        "recommendedReasonCode": {
+          "type": "string",
+          "enum": [
+            "ALL_CHECKS_PASSED",
+            "CLOUD_GAP_EXCEEDED",
+            "TIDAL_INUNDATION_HIGH",
+            "OUT_OF_MONITORING_WINDOW",
+            "BOUNDARY_MISMATCH",
+            "INCOMPLETE_SCENE_SELECTION",
+            "ARTIFACT_HASH_MISMATCH",
+            "SERIAL_OVERLAP_DETECTED",
+            "OPTICAL_SAR_DIVERGENCE",
+            "GEOFENCE_OUT_OF_BOUNDS"
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["evaluatedAtUtc", "evaluatorEngineVersion", "environment"],
+      "properties": {
+        "evaluatedAtUtc": { "type": "string" },
+        "evaluatorEngineVersion": { "type": "string" },
+        "environment": { "type": "string" }
+      }
+    }
+  }
+}

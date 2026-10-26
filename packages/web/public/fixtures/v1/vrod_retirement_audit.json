@@ -1,0 +1,39 @@
+{
+  "advisoryStatus": "SERIAL_OVERLAP_DETECTED",
+  "auditModule": "Berkeley-VROD-Serial-Integrity-Engine",
+  "methodologyCaveat": "Advisory risk flag for human auditor verification; not an automated legal double-counting verdict.",
+  "overlappingBatchesDetected": 1,
+  "overlaps": [
+    {
+      "advisoryNote": "Retirement claims CLAIM-2023-PRIMARY-01 and CLAIM-2023-DUP-09 reference an overlapping block of 2500 VCUs (319490001..319492500). Flagged for auditor reconciliation.",
+      "claimA": "CLAIM-2023-PRIMARY-01",
+      "claimB": "CLAIM-2023-DUP-09",
+      "overlappingRange": "319490001-319492500",
+      "overlappingUnits": 2500
+    }
+  ],
+  "projectId": "VCS-1463",
+  "retirementBatches": [
+    {
+      "beneficiary": "Ecosystem Restoration Fund",
+      "claimId": "CLAIM-2023-PRIMARY-01",
+      "serialBlock": "11452-319482101-319532100-VCS-VCU-263-VER-IN-14-1463-01012018-31122018-0",
+      "units": 50000
+    },
+    {
+      "beneficiary": "Global Carbon Offsetters Ltd",
+      "claimId": "CLAIM-2023-DUP-09",
+      "serialBlock": "11452-319490001-319492500-VCS-VCU-263-VER-IN-14-1463-01012018-31122018-0",
+      "units": 2500
+    },
+    {
+      "beneficiary": "Nordic Climate Alliance",
+      "claimId": "CLAIM-2023-PRIMARY-02",
+      "serialBlock": "11452-319532101-319557100-VCS-VCU-263-VER-IN-14-1463-01012018-31122018-0",
+      "units": 25000
+    }
+  ],
+  "totalBatchesAudited": 3,
+  "totalUnitsAudited": 77500,
+  "version": "1.0.0"
+}
